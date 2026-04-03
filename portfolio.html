@@ -1,0 +1,911 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work | AIMTECH Animation Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-blue: #0A84FF;
+            --deep-blue: #1E3A8A;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            --gradient-main: linear-gradient(135deg, #0A84FF 0%, #1E3A8A 100%);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #f8fafc;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            background: var(--gradient-main);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 132, 255, 0.5);
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--deep-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Page Header --- */
+        .page-header {
+            padding-top: 160px;
+            padding-bottom: 60px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, #f0f9ff, #fff);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* --- Filter Tabs --- */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient-main);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
+        }
+
+        /* --- Project Grid --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            background: #e2e8f0;
+            cursor: pointer;
+            group: 1;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(30, 58, 138, 0.85);
+            /* Deep Blue Overlay */
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .project-info h3 {
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-family: 'Inter';
+        }
+
+        .category-tag {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 700;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-card:hover .play-btn {
+            transform: scale(1.1);
+            background: white;
+            color: var(--deep-blue);
+        }
+
+        /* --- Featured Project --- */
+        .featured-section {
+            background: var(--deep-blue);
+            color: white;
+            border-radius: 30px;
+            overflow: hidden;
+            margin-bottom: 100px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.3);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .featured-content {
+            padding: 80px;
+        }
+
+        .featured-label {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .featured-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .featured-content p {
+            opacity: 0.8;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .featured-image {
+            height: 100%;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(30, 58, 138, 1) 0%, rgba(30, 58, 138, 0) 100%);
+            display: none;
+            /* Visible on mobile via media query */
+        }
+
+        /* --- Case Study --- */
+        .case-study-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cs-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f1f5f9;
+            transition: var(--transition);
+        }
+
+        .cs-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(10, 132, 255, 0.15);
+        }
+
+        .cs-icon {
+            width: 80px;
+            height: 80px;
+            background: #f0f9ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .cs-card h3 {
+            margin-bottom: 15px;
+            color: var(--deep-blue);
+        }
+
+        .cs-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .arrow-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            font-size: 1.5rem;
+            margin-top: 40px;
+        }
+
+        /* --- CTA --- */
+        .cta-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #fff 100%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 15px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--deep-blue);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 30px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* --- Video Modal --- */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            width: 80%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            margin-top: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* --- Animation Utilities --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image {
+                min-height: 300px;
+            }
+
+            .featured-overlay {
+                display: block;
+            }
+
+            .case-study-container {
+                grid-template-columns: 1fr;
+            }
+
+            .arrow-connector {
+                transform: rotate(90deg);
+                margin: -10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+        <!-- Header / Nav -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="text-decoration: none;">
+                <i class="fa-solid fa-film"></i> AIMTECH Animation
+            </a>
+            <div class="mobile-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <nav>
+                <ul class="nav-links" id="nav-links" style="list-style: none;">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html" style="font-weight: 600;">Login</a></li>
+                    <li><a href="signup.html" class="btn" style="padding: 8px 20px; color: white; background: var(--gradient-main);">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="reveal">Our <span class="gradient-text">Work</span></h1>
+            <p class="reveal" style="transition-delay: 0.1s;">A curated selection of films, animations, and digital
+                campaigns.</p>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <!-- Filter Tabs -->
+        <div class="filter-container reveal">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="film">Films</button>
+            <button class="filter-btn" data-filter="animation">Animation</button>
+            <button class="filter-btn" data-filter="marketing">Marketing</button>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="project-grid">
+            <!-- Item 1: Film -->
+            <div class="project-card reveal" data-category="film" onclick="openModal('The Last Horizon', 'Film')">
+                <img src="https://picsum.photos/seed/film1/600/400" alt="Film Project">
+                <div class="project-overlay">
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    <div class="project-info">
+                        <span class="category-tag">Film</span>
+                        <h3>The Last Horizon</h3>
+                        <p>Cinematic Short</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2: Animation -->
+            <div class="project-card reveal" data-category="animation" onclick="openModal('Neon Cyber', 'Animation')">
+                <img src="https://picsum.photos/seed/anim1/600/400" alt="Animation Project">
+                <div class="project-overlay">
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    <div class="project-info">
+                        <span class="category-tag">Animation</span>
+                        <h3>Neon Cyber</h3>
+                        <p>3D Motion Graphics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3: Marketing -->
+            <div class="project-card reveal" data-category="marketing" onclick="openModal('EcoLaunch', 'Marketing')">
+                <img src="https://picsum.photos/seed/market1/600/400" alt="Marketing Project">
+                <div class="project-overlay">
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    <div class="project-info">
+                        <span class="category-tag">Marketing</span>
+                        <h3>EcoLaunch Campaign</h3>
+                        <p>Social Media Reels</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4: Film -->
+            <div class="project-card reveal" data-category="film" onclick="openModal('Urban Rhythms', 'Film')">
+                <img src="https://picsum.photos/seed/film2/600/400" alt="Film Project">
+                <div class="project-overlay">
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    <div class="project-info">
+                        <span class="category-tag">Film</span>
+                        <h3>Urban Rhythms</h3>
+                        <p>Documentary</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5: Animation -->
+            <div class="project-card reveal" data-category="animation" onclick="openModal('Tiny Tales', 'Animation')">
+                <img src="https://picsum.photos/seed/anim2/600/400" alt="Animation Project">
+                <div class="project-overlay">
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    <div class="project-info">
+                        <span class="category-tag">Animation</span>
+                        <h3>Tiny Tales</h3>
+                        <p>2D Character Series</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6: Marketing -->
+            <div class="project-card reveal" data-category="marketing" onclick="openModal('TechFlow', 'Marketing')">
+                <img src="https://picsum.photos/seed/market2/600/400" alt="Marketing Project">
+                <div class="project-overlay">
+                    <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    <div class="project-info">
+                        <span class="category-tag">Marketing</span>
+                        <h3>TechFlow Promo</h3>
+                        <p>Commercial Ad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Project (Spotlight) -->
+        <div class="featured-section reveal">
+            <div class="featured-grid">
+                <div class="featured-content">
+                    <span class="featured-label">Featured Project</span>
+                    <h2>Chronicles of the Future</h2>
+                    <p>A groundbreaking documentary series exploring the intersection of artificial intelligence and
+                        human creativity. We handled full production, from drone cinematography to post-production VFX.
+                    </p>
+                    <button class="btn" style="background: white; color: var(--deep-blue);"
+                        onclick="openModal('Chronicles of the Future', 'Featured')">View Full Case Study</button>
+                </div>
+                <div class="featured-image">
+                    <img src="https://picsum.photos/seed/featured/800/600" alt="Featured Project">
+                    <div class="featured-overlay"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study Section -->
+        <section class="section-padding text-center">
+            <div class="reveal">
+                <h2 style="font-size: 2.5rem; color: var(--deep-blue); margin-bottom: 10px;">Case Study: Zenith Auto
+                </h2>
+                <p style="color: var(--text-light);">How we redefined a brand's digital presence.</p>
+            </div>
+
+            <div class="case-study-container">
+                <!-- Step 1 -->
+                <div class="cs-card reveal">
+                    <div class="cs-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <h3>The Problem</h3>
+                    <p>Zenith Auto needed to modernize their image to appeal to a younger, tech-savvy demographic while
+                        retaining their legacy trust.</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow-connector reveal"><i class="fa-solid fa-chevron-right"></i></div>
+
+                <!-- Step 2 -->
+                <div class="cs-card reveal">
+                    <div class="cs-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>The Solution</h3>
+                    <p>We developed a mixed-media campaign combining live-action footage with sleek 3D motion graphics
+                        to highlight vehicle features.</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="arrow-connector reveal"><i class="fa-solid fa-chevron-right"></i></div>
+
+                <!-- Step 3 -->
+                <div class="cs-card reveal">
+                    <div class="cs-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>The Result</h3>
+                    <p>A 150% increase in social engagement and a 40% boost in website traffic within the first quarter
+                        of the campaign launch.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section reveal">
+            <div class="bg-shape"
+                style="position:absolute; width:300px; height:300px; background:rgba(10,132,255,0.1); border-radius:50%; filter:blur(60px); top:-50px; right:-50px;">
+            </div>
+            <div class="cta-content">
+                <h2>Work With Us</h2>
+                <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-light);">Have a project in mind?
+                    Let's create something extraordinary together.</p>
+                <button class="btn" onclick="openContactForm()">Start a Project</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+        <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <div class="footer-col" style="margin-bottom: 20px;">
+                    <a href="index.html" class="logo" style="color: white; margin-bottom: 20px; display: inline-block; text-decoration: none;">
+                        <i class="fa-solid fa-film" style="color: #0A84FF;"></i> AIMTECH Animation
+                    </a>
+                    <p style="opacity: 0.7;">Elevating brands through the power of animation, film, and digital innovation.</p>
+                </div>
+
+                <div class="footer-col footer-info" style="margin-bottom: 20px;">
+                    <h3 style="color: white; margin-bottom: 15px;">Contact Us</h3>
+                    <p><i class="fa-solid fa-envelope"></i> hello@aimtechanimation.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fa-solid fa-location-dot"></i> 101 Creative Blvd, Tech City, CA</p>
+                </div>
+
+                <div class="footer-col" style="margin-bottom: 20px;">
+                    <h3 style="color: white; margin-bottom: 15px;">Quick Links</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="about.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">About Us</a>
+                        <a href="services.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Services</a>
+                        <a href="portfolio.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Portfolio</a>
+                        <a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-col" style="margin-bottom: 20px;">
+                    <h3 style="color: white; margin-bottom: 15px;">Follow Us</h3>
+                    <div class="social-icons" style="display:flex; gap: 15px; margin-top: 15px;">
+                        <a href="#" aria-label="Facebook" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright" style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 40px; color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+                &copy; 2023 AIMTECH Animation. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Video Modal Placeholder -->
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content">
+            <i class="fa-solid fa-circle-play" style="font-size: 4rem; opacity: 0.5;"></i>
+        </div>
+        <div style="color: white; margin-top: 15px; text-align: center;">
+            <h3 id="modalTitle">Project Title</h3>
+            <p id="modalCategory" style="opacity: 0.7; font-size: 0.9rem;">Category</p>
+        </div>
+        <div class="close-modal" onclick="closeModal()">&times;</div>
+    </div>
+
+    <script>
+        // --- 1. Filtering Logic ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active to clicked
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                        // Small timeout to allow display block to apply before opacity transition
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 400);
+                    }
+                });
+            });
+        });
+
+        // --- 2. Scroll Reveal Animation ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- 3. Mobile Menu Toggle ---
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // --- 4. Modal Logic ---
+        const modal = document.getElementById('videoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalCategory = document.getElementById('modalCategory');
+
+        function openModal(title, category) {
+            modalTitle.innerText = title;
+            modalCategory.innerText = category + ' Project';
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        function openContactForm() {
+            // Smooth scroll to a contact section or alert for demo
+            window.location.href = "index.html#contact";
+        }
+    </script>
+</body>
+
+</html>

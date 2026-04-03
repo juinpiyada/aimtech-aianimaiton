@@ -1,0 +1,933 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | AIMTECH Animation</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-blue: #0A84FF;
+            --deep-blue: #1E3A8A;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            --gradient-main: linear-gradient(135deg, #0A84FF 0%, #1E3A8A 100%);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #f8fafc;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            background: var(--gradient-main);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 132, 255, 0.5);
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--deep-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Page Header --- */
+        .page-header {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            background: radial-gradient(circle at top right, #f0f9ff, #fff);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-shape {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(10, 132, 255, 0.05);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .shape-1 {
+            top: -100px;
+            right: -100px;
+        }
+
+        .shape-2 {
+            bottom: 0;
+            left: -100px;
+            background: rgba(30, 58, 138, 0.05);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+        }
+
+        /* --- Shared Split Layout --- */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .text-content h2 {
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .service-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .service-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .service-list li i {
+            color: var(--primary-blue);
+            background: #e0f2fe;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* --- Section 2: Digital Marketing & Dashboard Visual --- */
+        .dashboard-visual {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            position: relative;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: var(--transition);
+        }
+
+        .dashboard-visual:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e2e8f0;
+        }
+
+        .dot.red {
+            background: #ff5f57;
+        }
+
+        .dot.yellow {
+            background: #febc2e;
+        }
+
+        .dot.green {
+            background: #28c840;
+        }
+
+        .mockup-body {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 20px;
+        }
+
+        .mockup-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar-item {
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+
+        .mockup-graph {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 200px;
+        }
+
+        .bar {
+            width: 12%;
+            background: var(--primary-blue);
+            border-radius: 6px 6px 0 0;
+            opacity: 0.7;
+            transition: height 1s ease;
+        }
+
+        /* --- Section 3: Films (Cinematic) --- */
+        .films-section {
+            background: var(--deep-blue);
+            color: var(--white);
+        }
+
+        .films-section h2 {
+            color: var(--white);
+        }
+
+        .films-section p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .films-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .film-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            group: 1;
+        }
+
+        .film-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .film-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .film-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .film-card:hover .film-overlay {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .film-card:hover .play-btn {
+            background: var(--white);
+            color: var(--deep-blue);
+            transform: scale(1.1);
+        }
+
+        /* --- Section 4: Animation (Storyboards) --- */
+        .storyboard-visual {
+            display: flex;
+            gap: 20px;
+            perspective: 1000px;
+        }
+
+        .sb-card {
+            flex: 1;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: var(--glass-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transform: rotateY(15deg) translateZ(20px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sb-card:nth-child(2) {
+            transform: rotateY(5deg) translateZ(40px);
+            z-index: 2;
+            margin-top: 30px;
+        }
+
+        .sb-card:nth-child(3) {
+            transform: rotateY(-5deg) translateZ(20px);
+        }
+
+        .sb-image {
+            width: 100%;
+            height: 120px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .sb-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sb-lines div {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .sb-lines div:nth-child(2) {
+            width: 70%;
+        }
+
+        .sb-lines div:nth-child(3) {
+            width: 40%;
+        }
+
+        .storyboard-visual:hover .sb-card:nth-child(2) {
+            transform: rotateY(0deg) translateZ(60px);
+        }
+
+        /* --- Section 5: Process Timeline --- */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 80px;
+            padding-bottom: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+
+        .timeline-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            box-shadow: 0 0 0 5px #f8fafc;
+            /* Gap around circle */
+            transition: var(--transition);
+        }
+
+        .timeline-step:hover .step-number {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .timeline-step h4 {
+            margin-bottom: 10px;
+            color: var(--deep-blue);
+        }
+
+        .timeline-step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* --- CTA --- */
+        .cta-section {
+            background: linear-gradient(135deg, #1E3A8A 0%, #0A84FF 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            border-radius: 30px;
+            margin-bottom: 80px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .cta-btn-white {
+            background: var(--white);
+            color: var(--primary-blue);
+            margin-top: 30px;
+        }
+
+        .cta-btn-white:hover {
+            background: #f1f5f9;
+            color: var(--deep-blue);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--deep-blue);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* --- Animation Utilities --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .split-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .text-content {
+                order: 2;
+            }
+
+            .visual-content {
+                order: 1;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 40px;
+                margin-top: 40px;
+            }
+
+            .timeline::before {
+                width: 2px;
+                height: 100%;
+                left: 25px;
+                top: 0;
+            }
+
+            .timeline-step {
+                text-align: left;
+                padding-left: 70px;
+            }
+
+            .step-number {
+                position: absolute;
+                left: 0;
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            /* Simplified for snippet */
+            .mobile-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+        <!-- Header / Nav -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="text-decoration: none;">
+                <i class="fa-solid fa-film"></i> AIMTECH Animation
+            </a>
+            <div class="mobile-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <nav>
+                <ul class="nav-links" id="nav-links" style="list-style: none;">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html" style="font-weight: 600;">Login</a></li>
+                    <li><a href="signup.html" class="btn" style="padding: 8px 20px; color: white; background: var(--gradient-main);">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="container header-content reveal">
+            <h1>Our <span class="gradient-text">Offerings</span></h1>
+            <p>From initial concept to final cut, we provide comprehensive digital solutions tailored to elevate your
+                brand's narrative.</p>
+        </div>
+    </section>
+
+    <!-- Digital Marketing -->
+    <section class="section-padding">
+        <div class="container split-section">
+            <div class="text-content reveal">
+                <h2>Digital Marketing</h2>
+                <p>We blend data-driven strategy with creative storytelling to amplify your brand's voice across all
+                    digital platforms.</p>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-check"></i> Social Media Management</li>
+                    <li><i class="fa-solid fa-check"></i> SEO & Content Strategy</li>
+                    <li><i class="fa-solid fa-check"></i> Brand Identity Design</li>
+                    <li><i class="fa-solid fa-check"></i> Influencer Partnerships</li>
+                </ul>
+            </div>
+            <div class="visual-content reveal">
+                <!-- CSS-Only Dashboard Visual -->
+                <div class="dashboard-visual">
+                    <div class="mockup-header">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-sidebar">
+                            <div class="sidebar-item"></div>
+                            <div class="sidebar-item"></div>
+                            <div class="sidebar-item"></div>
+                        </div>
+                        <div class="mockup-graph">
+                            <div class="bar" style="height: 40%;"></div>
+                            <div class="bar" style="height: 70%;"></div>
+                            <div class="bar" style="height: 50%;"></div>
+                            <div class="bar" style="height: 85%;"></div>
+                            <div class="bar" style="height: 60%;"></div>
+                            <div class="bar" style="height: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Films Section -->
+    <section class="section-padding films-section">
+        <div class="container">
+            <div class="text-center reveal" style="max-width: 700px; margin: 0 auto;">
+                <h2>Cinematic Films</h2>
+                <p>High-production visuals that capture emotion and tell your story with cinematic flair.</p>
+            </div>
+
+            <div class="films-grid">
+                <div class="film-card reveal">
+                    <img src="https://picsum.photos/seed/film_corp/600/400" alt="Corporate Video">
+                    <div class="film-overlay">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="film-card reveal">
+                    <img src="https://picsum.photos/seed/film_comm/600/400" alt="Commercial">
+                    <div class="film-overlay">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="film-card reveal">
+                    <img src="https://picsum.photos/seed/film_doc/600/400" alt="Documentary">
+                    <div class="film-overlay">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center reveal" style="margin-top: 40px;">
+                <p style="font-size: 0.9rem; opacity: 0.8;">Services: Corporate Videos â€¢ TV Commercials â€¢ Documentaries
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animation Section -->
+    <section class="section-padding">
+        <div class="container split-section">
+            <div class="visual-content reveal">
+                <!-- CSS Storyboard Visual -->
+                <div class="storyboard-visual">
+                    <div class="sb-card">
+                        <div class="sb-image"><img src="https://picsum.photos/seed/sketch1/200/200" alt="Sketch"></div>
+                        <div class="sb-lines">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="sb-card">
+                        <div class="sb-image"><img src="https://picsum.photos/seed/sketch2/200/200" alt="Sketch"></div>
+                        <div class="sb-lines">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="sb-card">
+                        <div class="sb-image"><img src="https://picsum.photos/seed/sketch3/200/200" alt="Sketch"></div>
+                        <div class="sb-lines">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-content reveal">
+                <h2>2D & 3D Animation</h2>
+                <p>Bringing imagination to life through cutting-edge animation techniques. We handle everything from
+                    character rigging to fluid motion graphics.</p>
+                <ul class="service-list">
+                    <li><i class="fa-solid fa-cube"></i> 3D Modeling & Rendering</li>
+                    <li><i class="fa-solid fa-pen-nib"></i> Character Design</li>
+                    <li><i class="fa-solid fa-layer-group"></i> Storyboarding</li>
+                    <li><i class="fa-solid fa-wand-magic"></i> Motion Graphics</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="section-padding" style="background: #fff;">
+        <div class="container">
+            <div class="text-center reveal">
+                <h2>Our Process</h2>
+                <p style="color: var(--text-light);">A streamlined workflow from concept to delivery.</p>
+            </div>
+
+            <div class="timeline reveal">
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <h4>Idea</h4>
+                    <p>Brainstorming, concept art, and scriptwriting to define the vision.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <h4>Production</h4>
+                    <p>Filming, animating, and creating assets with high-end equipment.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <h4>Editing</h4>
+                    <p>Post-production, VFX, color grading, and sound design.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">4</div>
+                    <h4>Delivery</h4>
+                    <p>Final export, optimization for platforms, and project handoff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="container">
+        <section class="cta-section reveal">
+            <h2>Ready to start your project?</h2>
+            <p>Let's collaborate to create something extraordinary.</p>
+            <a href="#" class="btn cta-btn-white">Start Your Project</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+        <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <div class="footer-col" style="margin-bottom: 20px;">
+                    <a href="index.html" class="logo" style="color: white; margin-bottom: 20px; display: inline-block; text-decoration: none;">
+                        <i class="fa-solid fa-film" style="color: #0A84FF;"></i> AIMTECH Animation
+                    </a>
+                    <p style="opacity: 0.7;">Elevating brands through the power of animation, film, and digital innovation.</p>
+                </div>
+
+                <div class="footer-col footer-info" style="margin-bottom: 20px;">
+                    <h3 style="color: white; margin-bottom: 15px;">Contact Us</h3>
+                    <p><i class="fa-solid fa-envelope"></i> hello@aimtechanimation.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fa-solid fa-location-dot"></i> 101 Creative Blvd, Tech City, CA</p>
+                </div>
+
+                <div class="footer-col" style="margin-bottom: 20px;">
+                    <h3 style="color: white; margin-bottom: 15px;">Quick Links</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="about.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">About Us</a>
+                        <a href="services.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Services</a>
+                        <a href="portfolio.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Portfolio</a>
+                        <a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-col" style="margin-bottom: 20px;">
+                    <h3 style="color: white; margin-bottom: 15px;">Follow Us</h3>
+                    <div class="social-icons" style="display:flex; gap: 15px; margin-top: 15px;">
+                        <a href="#" aria-label="Facebook" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright" style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 40px; color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+                &copy; 2023 AIMTECH Animation. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Simple Mobile Menu Toggle (Placeholder functionality)
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+
+</html>

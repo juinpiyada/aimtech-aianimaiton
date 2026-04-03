@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | AIMTECH Animation</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-blue: #0A84FF;
+            --deep-blue: #1E3A8A;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            --gradient-main: linear-gradient(135deg, #0A84FF 0%, #1E3A8A 100%);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #f0f4f8;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling on desktop */
+            display: flex;
+        }
+
+        /* --- Split Layout --- */
+        .split-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Left Side: Branding & Animation --- */
+        .left-branding {
+            flex: 1;
+            background: linear-gradient(135deg, var(--deep-blue) 0%, #0f172a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        /* Ambient Background Effects */
+        .ambient-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--primary-blue);
+            filter: blur(150px);
+            opacity: 0.2;
+            border-radius: 50%;
+            animation: floatGlow 10s infinite alternate;
+        }
+        .glow-1 { top: -100px; left: -100px; }
+        .glow-2 { bottom: -100px; right: -100px; animation-delay: 5s; background: #4f46e5; }
+
+        /* Branding Content */
+        .brand-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .logo-large {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .logo-large i {
+            color: var(--primary-blue);
+            animation: pulseIcon 3s infinite ease-in-out;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 400px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+
+        /* Cinematic Animation (Film Reel) */
+        .animation-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .film-reel {
+            width: 100%;
+            height: 100%;
+            border: 8px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: spin 20s linear infinite;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .film-reel::before {
+            content: '';
+            position: absolute;
+            inset: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .film-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(10, 132, 255, 0.5);
+        }
+
+        /* --- Right Side: Form --- */
+        .right-form {
+            flex: 1;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Soft Blue Glow behind card */
+        .soft-blue-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--primary-blue);
+            filter: blur(120px);
+            opacity: 0.15;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 24px;
+            padding: 40px;
+            z-index: 1;
+            position: relative;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .form-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: var(--deep-blue);
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 15px 12px 40px; /* Left padding for icon */
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.1);
+            background: white;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 38px; /* Aligned with input box */
+            color: #94a3b8;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .input-field:focus + .input-icon, 
+        .input-field:focus ~ .input-icon {
+            color: var(--primary-blue);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            accent-color: var(--primary-blue);
+            width: 16px;
+            height: 16px;
+        }
+
+        .forgot-pass {
+            color: var(--primary-blue);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .forgot-pass:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: var(--gradient-main);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(10, 132, 255, 0.4);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .form-footer a {
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Animations --- */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 10px rgba(10,132,255,0.5); }
+            50% { transform: scale(1.1); text-shadow: 0 0 20px rgba(10,132,255,0.8); }
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(20px, 40px); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .left-branding { display: none; }
+            .right-form { 
+                background: #f0f9ff; 
+                background-image: radial-gradient(circle at center, #e0f2fe 0%, #f8fafc 100%);
+            }
+            .glass-card {
+                background: white; /* Fallback for mobile if blur is heavy */
+                backdrop-filter: none;
+                border: 1px solid #e2e8f0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-container">
+        
+        <!-- Left Side: Branding Animation -->
+        <div class="left-branding">
+            <div class="ambient-glow glow-1"></div>
+            <div class="ambient-glow glow-2"></div>
+            
+            <div class="brand-content">
+                <a href="index.html" class="logo-large" style="text-decoration:none; color:white;">
+                    <i class="fa-solid fa-film"></i> AIMTECH Animation </a><p class="tagline">Bringing brands & stories to life through cinematic animation.</p>
+                
+                <!-- CSS Animation: Film Reel -->
+                <div class="animation-container">
+                    <div class="film-reel"></div>
+                    <div class="film-center">
+                        <i class="fa-solid fa-play" style="color: white; font-size: 1.2rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Login Form -->
+        <div class="right-form">
+            <div class="soft-blue-glow"></div>
+            
+            <div class="glass-card">
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Enter your credentials to access your dashboard.</p>
+                </div>
+
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <!-- Email Field -->
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="input-field" placeholder="name@company.com" required>
+                        <i class="fa-regular fa-envelope input-icon"></i>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="input-field" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
+                        <i class="fa-solid fa-lock input-icon"></i>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-pass">Forgot Password?</a>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <button type="submit" class="btn-login">Login</button>
+                </form>
+
+                <!-- Footer -->
+                <div class="form-footer">
+                    Don't have an account? <a href="signup.html">Sign up</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-login');
+            const originalText = btn.innerText;
+            
+            // Simulate loading state
+            btn.innerText = 'Authenticating...';
+            btn.style.opacity = '0.8';
+            
+            setTimeout(() => {
+                alert('Login Successful! Redirecting to dashboard...');
+                btn.innerText = originalText;
+                btn.style.opacity = '1';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
+
