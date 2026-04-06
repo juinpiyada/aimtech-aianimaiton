@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIMTECH Animation | Creative Film & Digital Studio</title>
+    <title>Aimax Studio | Creative Film & Digital Studio</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,6 +148,10 @@
             transition: var(--transition);
         }
 
+        header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -162,22 +167,56 @@
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
+            text-decoration: none;
+            flex-shrink: 0;
         }
 
-        .logo i {
-            color: var(--primary-blue);
+        .logo img {
+            height: 62px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: scale(1.08);
+        }
+
+        .logo-caption {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        .logo-caption .studio-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--deep-blue);
+            letter-spacing: -0.3px;
+        }
+
+        .logo-caption .studio-tagline {
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--text-light);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            align-items: center;
+            gap: 28px;
         }
 
         .nav-links a {
             font-weight: 500;
             color: var(--text-dark);
             position: relative;
+            font-size: 0.95rem;
+            white-space: nowrap;
         }
 
         .nav-links a::after {
@@ -195,14 +234,91 @@
             width: 100%;
         }
 
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--deep-blue);
+        .nav-btn-signup {
+            padding: 8px 22px !important;
+            color: white !important;
+            background: var(--gradient-main);
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(10, 132, 255, 0.3);
         }
 
-        /* --- Hero Section with API Video Background --- */
+        .nav-btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.4);
+        }
+
+        .nav-btn-signup::after {
+            display: none !important;
+        }
+
+        .nav-btn-login {
+            font-weight: 600 !important;
+            color: var(--deep-blue) !important;
+        }
+
+        /* Hamburger Icon */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            gap: 6px;
+            padding: 0;
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: var(--deep-blue);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        /* Mobile Nav Overlay */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+        }
+
+        /* --- Hero Section --- */
         .hero {
             position: relative;
             height: 100vh;
@@ -212,10 +328,8 @@
             justify-content: center;
             overflow: hidden;
             background: #000;
-            /* Fallback color */
         }
 
-        /* Container for the YouTube API */
         #video-background {
             position: absolute;
             top: 0;
@@ -224,25 +338,20 @@
             height: 100%;
             z-index: 1;
             pointer-events: none;
-            /* Prevent interaction */
         }
 
-        /* The iframe injected by the API */
         #video-background iframe {
             position: absolute;
             top: 50%;
             left: 50%;
             width: 100vw;
             height: 56.25vw;
-            /* 16:9 Aspect Ratio */
             min-height: 100vh;
             min-width: 177.77vh;
-            /* 16:9 Aspect Ratio */
             transform: translate(-50%, -50%);
             pointer-events: none;
         }
 
-        /* Dark Overlay to ensure text readability */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -250,7 +359,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.6);
-            /* Darker overlay for better contrast */
             z-index: 2;
         }
 
@@ -261,7 +369,6 @@
             max-width: 800px;
             padding: 0 20px;
             opacity: 0;
-            /* Animated via JS */
             transform: translateY(30px);
         }
 
@@ -426,8 +533,13 @@
         }
 
         @keyframes scrollLogos {
-            from { transform: translateX(0); }
-            to { transform: translateX(calc(-50% - 40px)); } /* 50% plus half gap correction */
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(calc(-50% - 40px));
+            }
         }
 
         .client-logo {
@@ -439,7 +551,7 @@
         }
 
         .client-logo img {
-            max-height: 100px; /* Increased logo size */
+            max-height: 100px;
             object-fit: contain;
             transition: var(--transition);
         }
@@ -464,7 +576,7 @@
             height: 300px;
             border-radius: 20px;
             overflow: hidden;
-            group: cursor;
+            cursor: pointer;
         }
 
         .industry-card img {
@@ -521,11 +633,10 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .showcase-item img {
+        .showcase-item iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
+            border: none;
         }
 
         .play-overlay {
@@ -628,6 +739,7 @@
 
         .footer-info i {
             color: var(--primary-blue);
+            flex-shrink: 0;
         }
 
         .social-icons {
@@ -644,11 +756,13 @@
             align-items: center;
             justify-content: center;
             transition: var(--transition);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .social-icons a:hover {
             background: var(--primary-blue);
             transform: translateY(-3px);
+            color: white;
         }
 
         .copyright {
@@ -657,6 +771,44 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
+        }
+
+        /* --- Footer Logo --- */
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .footer-logo img {
+            height: 56px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .footer-logo-caption {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        .footer-logo-caption .studio-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.3px;
+        }
+
+        .footer-logo-caption .studio-tagline {
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         /* --- Animation Utilities (Scroll Reveal) --- */
@@ -672,38 +824,228 @@
         }
 
         /* --- Responsive Media Queries --- */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
 
+        /* Tablet */
+        @media (max-width: 1024px) {
             .nav-links {
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                flex-direction: column;
-                padding: 20px;
-                gap: 20px;
-                text-align: center;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-                transform: translateY(-150%);
-                transition: transform 0.3s ease;
-                z-index: 999;
+                gap: 18px;
             }
 
-            .nav-links.active {
-                transform: translateY(0);
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Mobile Landscape & Small Tablets */
+        @media (max-width: 768px) {
+            .nav-container {
+                height: 70px;
             }
 
             .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                padding: 90px 30px 40px;
+                gap: 0;
+                text-align: left;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                transform: translateX(100%);
+                transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+                z-index: 999;
+                overflow-y: auto;
+                align-items: stretch;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
                 display: block;
+                padding: 14px 0;
+                font-size: 1rem;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .nav-links a:hover {
+                color: var(--primary-blue);
+                padding-left: 8px;
+            }
+
+            .nav-btn-login {
+                border-bottom: none !important;
+                margin-top: 10px;
+            }
+
+            .nav-btn-signup {
+                display: block !important;
+                text-align: center;
+                margin-top: 10px;
+                padding: 12px 22px !important;
+                border-bottom: none !important;
+            }
+
+            .nav-overlay {
+                display: block;
+            }
+
+            .nav-overlay.active {
+                pointer-events: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
 
             .hero-btns {
                 flex-direction: column;
-                padding: 0 40px;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .hero-btns .btn {
+                width: 240px;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 70px 0;
+            }
+
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Mobile Portrait */
+        @media (max-width: 480px) {
+            .logo img {
+                height: 42px;
+            }
+
+            .logo-caption .studio-name {
+                font-size: 1rem;
+            }
+
+            .logo-caption .studio-tagline {
+                font-size: 0.55rem;
+                letter-spacing: 1px;
+            }
+
+            .logo {
+                gap: 10px;
+            }
+
+            .nav-container {
+                height: 64px;
+            }
+
+            .nav-links {
+                width: 260px;
+                padding: 80px 24px 30px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .section-header h2 {
+                font-size: 1.7rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .glass-card {
+                padding: 30px 24px;
+            }
+
+            .industry-card {
+                height: 220px;
+            }
+
+            footer {
+                padding: 60px 0 20px;
+            }
+
+            .footer-logo img {
+                height: 40px;
+            }
+
+            .footer-logo-caption .studio-name {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .logo-caption .studio-tagline {
+                display: none;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -711,25 +1053,35 @@
 
 <body>
 
+    <!-- Nav Overlay for Mobile -->
+    <div class="nav-overlay" id="nav-overlay"></div>
+
     <!-- Header / Nav -->
-        <!-- Header / Nav -->
     <header id="header">
         <div class="container nav-container">
-            <a href="index.html" class="logo" style="text-decoration: none;">
-                <i class="fa-solid fa-film"></i> AIMTECH Animation
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="Aimax Studio Logo">
+                <span class="logo-caption">
+                    <span class="studio-name">Aimax Studio</span>
+                    <span class="studio-tagline">Creative Film & Digital</span>
+                </span>
             </a>
-            <div class="mobile-toggle" id="mobile-menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+
+            <button class="mobile-toggle" id="mobile-menu" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <nav>
-                <ul class="nav-links" id="nav-links" style="list-style: none;">
+                <ul class="nav-links" id="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html" style="font-weight: 600;">Login</a></li>
-                    <li><a href="signup.html" class="btn" style="padding: 8px 20px; color: white; background: var(--gradient-main);">Sign Up</a></li>
+                    <li><a href="login.html" class="nav-btn-login">Login</a></li>
+                    <li><a href="signup.html" class="nav-btn-signup">Sign Up</a></li>
                 </ul>
             </nav>
         </div>
@@ -738,7 +1090,11 @@
     <!-- Hero Section with Video Background -->
     <section class="hero">
         <div id="video-background">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/LGUphSYEH9M?si=DHJ8kwyhztjEaQTv&amp;start=4&amp;controls=0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=LGUphSYEH9M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/LGUphSYEH9M?si=DHJ8kwyhztjEaQTv&amp;start=4&amp;controls=0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=LGUphSYEH9M"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
         <!-- Dark Overlay -->
@@ -811,7 +1167,7 @@
                     <div class="client-logo"><img src="ilish-truly-bong-logo.jpg" alt="Ilish Truly Bong"></div>
                     <div class="client-logo"><img src="hitech-animation-logo.jpg" alt="Hi Tech Animation"></div>
                     <div class="client-logo"><img src="reliance-animation-logo.jpg" alt="Reliance Animation"></div>
-                    
+
                     <!-- Duplicated Set for Seamless Scroll -->
                     <div class="client-logo"><img src="ilish-truly-bong-logo.jpg" alt="Ilish Truly Bong"></div>
                     <div class="client-logo"><img src="hitech-animation-logo.jpg" alt="Hi Tech Animation"></div>
@@ -828,7 +1184,7 @@
     <section id="why-us" class="section-padding why-us">
         <div class="container">
             <div class="section-header text-center reveal">
-                <h2>Why Choose AIMTECH?</h2>
+                <h2>Why Choose Aimax Studio?</h2>
                 <p>We blend technology with artistry.</p>
             </div>
 
@@ -904,22 +1260,40 @@
 
             <div class="showcase-grid">
                 <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/c3QtrF48R5I?si=9FZ9d8rB-KFj0fny" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+                    <iframe src="https://www.youtube.com/embed/c3QtrF48R5I?si=9FZ9d8rB-KFj0fny" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/9gaN9b1gEto?si=1hdWW0tr8GB3yI1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+                    <iframe src="https://www.youtube.com/embed/9gaN9b1gEto?si=1hdWW0tr8GB3yI1Y" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/lPclb6qcis4?si=uOfc_cxb99G-h71q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+                    <iframe src="https://www.youtube.com/embed/lPclb6qcis4?si=uOfc_cxb99G-h71q" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/WkxP0qgNhGM?si=O02mFjRrKmaDFZMm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+                    <iframe src="https://www.youtube.com/embed/WkxP0qgNhGM?si=O02mFjRrKmaDFZMm" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/WkxP0qgNhGM?si=SAn4sEMcx7XYe-Af" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+                    <iframe src="https://www.youtube.com/embed/WkxP0qgNhGM?si=SAn4sEMcx7XYe-Af" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/LGUphSYEH9M?si=jIsZb3GTDcvVdxJy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 100%;"></iframe>
+                    <iframe src="https://www.youtube.com/embed/LGUphSYEH9M?si=jIsZb3GTDcvVdxJy" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -935,26 +1309,31 @@
     </section>
 
     <!-- Footer -->
-        <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                <div class="footer-col" style="margin-bottom: 20px;">
-                    <a href="index.html" class="logo" style="color: white; margin-bottom: 20px; display: inline-block; text-decoration: none;">
-                        <i class="fa-solid fa-film" style="color: #0A84FF;"></i> AIMTECH Animation
+            <div class="footer-grid">
+                <!-- Footer Logo Column -->
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/logo.png" alt="Aimax Studio Logo">
+                        <span class="footer-logo-caption">
+                            <span class="studio-name">Aimax Studio</span>
+                            <span class="studio-tagline">Creative Film & Digital</span>
+                        </span>
                     </a>
-                    <p style="opacity: 0.7;">Elevating brands through the power of animation, film, and digital innovation.</p>
+                    <p style="opacity: 0.7; margin-top: 15px;">Elevating brands through the power of animation, film,
+                        and digital innovation.</p>
                 </div>
 
-                <div class="footer-col footer-info" style="margin-bottom: 20px;">
-                    <h3 style="color: white; margin-bottom: 15px;">Contact Us</h3>
-                    <p><i class="fa-solid fa-envelope"></i> hello@aimtechanimation.com</p>
+                <div class="footer-col footer-info">
+                    <h3>Contact Us</h3>
+                    <p><i class="fa-solid fa-envelope"></i> hello@animaxstudio.com</p>
                     <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
                     <p><i class="fa-solid fa-location-dot"></i> 101 Creative Blvd, Tech City, CA</p>
                 </div>
 
-                <div class="footer-col" style="margin-bottom: 20px;">
-                    <h3 style="color: white; margin-bottom: 15px;">Quick Links</h3>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <a href="about.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">About Us</a>
                         <a href="services.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Services</a>
@@ -963,37 +1342,37 @@
                     </div>
                 </div>
 
-                <div class="footer-col" style="margin-bottom: 20px;">
-                    <h3 style="color: white; margin-bottom: 15px;">Follow Us</h3>
-                    <div class="social-icons" style="display:flex; gap: 15px; margin-top: 15px;">
-                        <a href="#" aria-label="Facebook" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="YouTube" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-youtube"></i></a>
+                <div class="footer-col">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons" style="margin-top: 15px;">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="copyright" style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 40px; color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
-                &copy; 2023 AIMTECH Animation. All Rights Reserved.
+            <div class="copyright">
+                &copy; 2026 Aimax Studio. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Simple Modal for Contact (No native alerts) -->
+    <!-- Simple Modal for Contact -->
     <div id="contact-modal"
         style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center;">
         <div
             style="background: white; padding: 40px; border-radius: 15px; max-width: 500px; width: 90%; position: relative; animation: slideUp 0.3s ease;">
             <span onclick="closeContactModal()"
-                style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #64748b;">&times;</span>
+                style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #64748b; line-height: 1;">&times;</span>
             <h3 style="color: var(--deep-blue); margin-bottom: 20px;">Get in Touch</h3>
             <form onsubmit="handleFormSubmit(event)">
                 <input type="text" placeholder="Your Name" required
-                    style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter';">
+                    style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter'; font-size: 0.95rem;">
                 <input type="email" placeholder="Your Email" required
-                    style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter';">
+                    style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter'; font-size: 0.95rem;">
                 <textarea placeholder="Project Details" rows="4"
-                    style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter';"></textarea>
+                    style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter'; font-size: 0.95rem; resize: vertical;"></textarea>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
             </form>
         </div>
@@ -1031,18 +1410,64 @@
             heroContent.style.transition = "all 1s ease-out";
         }, 500);
 
+        // --- 2. Header Scroll Effect ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // --- 3. Mobile Menu Toggle ---
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
+        const navOverlay = document.getElementById('nav-overlay');
+        let menuOpen = false;
 
-        mobileMenuBtn.addEventListener('click', () => {
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = menuOpen ? 'hidden' : '';
+        }
+
+        function closeMenu() {
+            if (menuOpen) {
+                menuOpen = false;
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        navOverlay.addEventListener('click', closeMenu);
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+                closeContactModal();
+            }
+        });
+
+        // Close menu on window resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
         });
 
         // --- 4. Modal & Toast Interactions ---
@@ -1051,17 +1476,21 @@
 
         function openContactModal() {
             modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
 
         function closeContactModal() {
             modal.style.display = 'none';
+            if (!menuOpen) {
+                document.body.style.overflow = '';
+            }
         }
 
-        window.onclick = function (event) {
+        window.addEventListener('click', function (event) {
             if (event.target == modal) {
                 closeContactModal();
             }
-        }
+        });
 
         function handleFormSubmit(e) {
             e.preventDefault();
@@ -1084,8 +1513,8 @@
             }
         `;
         document.head.appendChild(styleSheet);
-
     </script>
+
 </body>
 
 </html>
