@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aimax Studio | Creative Film & Digital Studio</title>
+    <title>Our Services | Aimax Studio</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
 
     <!-- Google Fonts -->
@@ -93,6 +93,7 @@
         .gradient-text {
             background: var(--gradient-main);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
@@ -120,18 +121,6 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(10, 132, 255, 0.5);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-blue);
-            color: var(--primary-blue);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-blue);
-            color: var(--white);
-            transform: translateY(-2px);
         }
 
         /* --- Header / Nav --- */
@@ -209,6 +198,10 @@
             display: flex;
             align-items: center;
             gap: 28px;
+        }
+
+        .nav-links li {
+            position: relative;
         }
 
         .nav-links a {
@@ -312,390 +305,340 @@
             z-index: 998;
             opacity: 0;
             transition: opacity 0.3s ease;
+            pointer-events: none;
         }
 
         .nav-overlay.active {
             opacity: 1;
+            pointer-events: auto;
         }
 
-        /* --- Hero Section --- */
-        .hero {
+        /* --- Page Header --- */
+        .page-header {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            background: radial-gradient(circle at top right, #f0f9ff, #fff);
             position: relative;
-            height: 100vh;
-            min-height: 700px;
+            overflow: hidden;
+        }
+
+        .bg-shape {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(10, 132, 255, 0.05);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .shape-1 {
+            top: -100px;
+            right: -100px;
+        }
+
+        .shape-2 {
+            bottom: 0;
+            left: -100px;
+            background: rgba(30, 58, 138, 0.05);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+        }
+
+        /* --- Services Sections --- */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .text-content h2 {
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .service-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .service-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .service-list li i {
+            color: var(--primary-blue);
+            background: #e0f2fe;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            background: #000;
+            font-size: 0.8rem;
         }
 
-        #video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        #video-background iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 56.25vw;
-            min-height: 100vh;
-            min-width: 177.77vh;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 2;
-        }
-
-        .hero-content {
+        /* --- Visual Components --- */
+        .dashboard-visual {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            padding: 20px;
             position: relative;
-            z-index: 3;
-            text-align: center;
-            max-width: 800px;
-            padding: 0 20px;
-            opacity: 0;
-            transform: translateY(30px);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: var(--transition);
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        .dashboard-visual:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #e2e8f0;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-btns {
+        .mockup-header {
             display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e2e8f0;
+        }
+
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #febc2e; }
+        .dot.green { background: #28c840; }
+
+        .mockup-body {
+            display: grid;
+            grid-template-columns: 60px 1fr;
             gap: 20px;
-            justify-content: center;
         }
 
-        /* --- Services Section --- */
-        .section-header {
-            margin-bottom: 60px;
+        .sidebar-item {
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
 
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--deep-blue);
-            margin-bottom: 15px;
+        .mockup-graph {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 200px;
         }
 
-        .section-header p {
-            color: var(--text-light);
+        .bar {
+            width: 12%;
+            background: var(--primary-blue);
+            border-radius: 6px 6px 0 0;
+            opacity: 0.7;
+            transition: height 1s ease;
         }
 
-        .services-grid {
+        /* Films Section */
+        .films-section {
+            background: var(--deep-blue);
+            color: var(--white);
+        }
+
+        .films-section h2 { color: var(--white); }
+        .films-section p { color: rgba(255, 255, 255, 0.7); }
+
+        .films-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 50px;
         }
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            border-radius: 20px;
-            padding: 40px 30px;
-            transition: var(--transition);
+        .film-card {
             position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
-            z-index: -1;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(31, 38, 135, 0.15);
-            border-color: var(--primary-blue);
-        }
-
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
             border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 25px;
-            transition: var(--transition);
-        }
-
-        .glass-card:hover .icon-box {
-            background: var(--gradient-main);
-            color: var(--white);
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .glass-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--deep-blue);
-        }
-
-        .glass-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* --- Why Choose Us --- */
-        .why-us {
-            background: #fff;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .feature-item h4 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            color: var(--deep-blue);
-        }
-
-        /* --- Trusted By --- */
-        .trusted-by {
-            padding: 50px 0;
-            background: #f1f5f9;
             overflow: hidden;
-        }
-
-        .logo-scroll-wrapper {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        .logo-scroll-track {
-            display: flex;
-            align-items: center;
-            gap: 80px;
-            width: max-content;
-            animation: scrollLogos 20s linear infinite;
-        }
-
-        .logo-scroll-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scrollLogos {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(calc(-50% - 40px));
-            }
-        }
-
-        .client-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            opacity: 0.8;
-        }
-
-        .client-logo img {
-            max-height: 100px;
-            object-fit: contain;
-            transition: var(--transition);
-        }
-
-        .client-logo:hover {
-            opacity: 1;
-        }
-
-        .client-logo:hover img {
-            transform: scale(1.1);
-        }
-
-        /* --- Industries --- */
-        .industries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .industry-card {
-            position: relative;
-            height: 300px;
-            border-radius: 20px;
-            overflow: hidden;
+            aspect-ratio: 16/9;
             cursor: pointer;
         }
 
-        .industry-card img {
+        .film-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
 
-        .industry-overlay {
+        .film-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px;
-            background: linear-gradient(to top, rgba(30, 58, 138, 0.9), transparent);
-            color: var(--white);
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .industry-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .industry-card:hover .industry-overlay {
-            transform: translateY(0);
-        }
-
-        .industry-overlay h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .industry-overlay p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-
-        /* --- Showcase --- */
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-        }
-
-        .showcase-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            aspect-ratio: 16/9;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .showcase-item iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 132, 255, 0.8);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
+            transition: 0.3s;
         }
 
-        .play-icon {
+        .play-btn {
             width: 60px;
             height: 60px;
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-blue);
-            font-size: 1.5rem;
-            transform: scale(0.8);
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-size: 1.2rem;
             transition: var(--transition);
         }
 
-        .showcase-item:hover .play-overlay {
-            opacity: 1;
+        .film-card:hover img { transform: scale(1.05); }
+        .film-card:hover .play-btn { background: var(--white); color: var(--deep-blue); transform: scale(1.1); }
+
+        /* Storyboard Component */
+        .storyboard-visual {
+            display: flex;
+            gap: 20px;
+            perspective: 1000px;
         }
 
-        .showcase-item:hover .play-icon {
-            transform: scale(1.1);
+        .sb-card {
+            flex: 1;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: var(--glass-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transform: rotateY(15deg) translateZ(20px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- CTA Section --- */
-        .cta-section {
-            background: var(--gradient-main);
-            padding: 100px 0;
-            text-align: center;
-            color: var(--white);
-            position: relative;
+        .sb-card:nth-child(2) {
+            transform: rotateY(5deg) translateZ(40px);
+            z-index: 2;
+            margin-top: 30px;
+        }
+
+        .sb-card:nth-child(3) { transform: rotateY(-5deg) translateZ(20px); }
+
+        .sb-image {
+            width: 100%;
+            height: 120px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 15px;
             overflow: hidden;
         }
 
-        .cta-content {
+        .sb-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        .sb-lines div {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .sb-lines div:nth-child(2) { width: 70%; }
+        .sb-lines div:nth-child(3) { width: 40%; }
+
+        .storyboard-visual:hover .sb-card:nth-child(2) { transform: rotateY(0deg) translateZ(60px); }
+
+        /* Process Timeline */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
             position: relative;
-            z-index: 2;
+            margin-top: 80px;
         }
 
-        .cta-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 0;
         }
 
-        .cta-btn {
+        .timeline-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            box-shadow: 0 0 0 5px #f8fafc;
+            transition: var(--transition);
+        }
+
+        .timeline-step:hover .step-number { background: var(--primary-blue); color: var(--white); transform: scale(1.1); }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-main);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            border-radius: 30px;
+            margin-bottom: 80px;
+        }
+
+        .cta-section h2 { margin-bottom: 20px; font-size: 2.5rem; }
+
+        .cta-btn-white {
             background: var(--white);
             color: var(--primary-blue);
             padding: 15px 40px;
@@ -704,13 +647,9 @@
             border: none;
         }
 
-        .cta-btn:hover {
-            background: #f0f9ff;
-            color: var(--deep-blue);
-            transform: translateY(-3px);
-        }
+        .cta-btn-white:hover { background: #f0f9ff; color: var(--deep-blue); transform: translateY(-3px); }
 
-        /* --- Footer --- */
+        /* Footer */
         footer {
             background: var(--deep-blue);
             color: var(--white);
@@ -724,10 +663,7 @@
             margin-bottom: 60px;
         }
 
-        .footer-col h3 {
-            margin-bottom: 25px;
-            color: var(--white);
-        }
+        .footer-col h3 { margin-bottom: 25px; color: var(--white); }
 
         .footer-info p {
             color: rgba(255, 255, 255, 0.7);
@@ -737,15 +673,9 @@
             gap: 10px;
         }
 
-        .footer-info i {
-            color: var(--primary-blue);
-            flex-shrink: 0;
-        }
+        .footer-info i { color: var(--primary-blue); flex-shrink: 0; }
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
+        .social-icons { display: flex; gap: 15px; }
 
         .social-icons a {
             width: 40px;
@@ -759,11 +689,7 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        .social-icons a:hover {
-            background: var(--primary-blue);
-            transform: translateY(-3px);
-            color: white;
-        }
+        .social-icons a:hover { background: var(--primary-blue); transform: translateY(-3px); color: white; }
 
         .copyright {
             text-align: center;
@@ -773,7 +699,7 @@
             font-size: 0.9rem;
         }
 
-        /* --- Footer Logo --- */
+        /* Footer Logo */
         .footer-logo {
             display: flex;
             align-items: center;
@@ -811,7 +737,7 @@
             text-transform: uppercase;
         }
 
-        /* --- Animation Utilities (Scroll Reveal) --- */
+        /* Animation Classes */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -823,37 +749,14 @@
             transform: translateY(0);
         }
 
-        /* --- Responsive Media Queries --- */
-
-        /* Tablet */
+        /* Responsive Queries */
         @media (max-width: 1024px) {
-            .nav-links {
-                gap: 18px;
-            }
-
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
+            .nav-links { gap: 18px; }
+            .header-content h1 { font-size: 3rem; }
         }
 
-        /* Mobile Landscape & Small Tablets */
         @media (max-width: 768px) {
-            .nav-container {
-                height: 70px;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
+            .mobile-toggle { display: flex; }
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -863,200 +766,29 @@
                 background: var(--white);
                 flex-direction: column;
                 padding: 90px 30px 40px;
-                gap: 0;
-                text-align: left;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
                 transform: translateX(100%);
                 transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
                 z-index: 999;
-                overflow-y: auto;
                 align-items: stretch;
             }
-
-            .nav-links.active {
-                transform: translateX(0);
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 14px 0;
-                font-size: 1rem;
-                border-bottom: 1px solid #f1f5f9;
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .nav-links a:hover {
-                color: var(--primary-blue);
-                padding-left: 8px;
-            }
-
-            .nav-btn-login {
-                border-bottom: none !important;
-                margin-top: 10px;
-            }
-
-            .nav-btn-signup {
-                display: block !important;
-                text-align: center;
-                margin-top: 10px;
-                padding: 12px 22px !important;
-                border-bottom: none !important;
-            }
-
-            .nav-overlay {
-                display: block;
-            }
-
-            .nav-overlay.active {
-                pointer-events: auto;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-
-            .hero-btns .btn {
-                width: 240px;
-            }
-
-            .section-padding {
-                padding: 60px 0;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .industries-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .showcase-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section {
-                padding: 70px 0;
-            }
-
-            .cta-content h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* Mobile Portrait */
-        @media (max-width: 480px) {
-            .logo img {
-                height: 42px;
-            }
-
-            .logo-caption .studio-name {
-                font-size: 1rem;
-            }
-
-            .logo-caption .studio-tagline {
-                font-size: 0.55rem;
-                letter-spacing: 1px;
-            }
-
-            .logo {
-                gap: 10px;
-            }
-
-            .nav-container {
-                height: 64px;
-            }
-
-            .nav-links {
-                width: 260px;
-                padding: 80px 24px 30px;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                min-height: 600px;
-            }
-
-            .section-header h2 {
-                font-size: 1.7rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .glass-card {
-                padding: 30px 24px;
-            }
-
-            .industry-card {
-                height: 220px;
-            }
-
-            footer {
-                padding: 60px 0 20px;
-            }
-
-            .footer-logo img {
-                height: 40px;
-            }
-
-            .footer-logo-caption .studio-name {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* Extra small devices */
-        @media (max-width: 360px) {
-            .logo-caption .studio-tagline {
-                display: none;
-            }
-
-            .logo img {
-                height: 38px;
-            }
-
-            .hero h1 {
-                font-size: 1.6rem;
-            }
+            .nav-links.active { transform: translateX(0); }
+            .nav-links a { display: block; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
+            .nav-btn-signup { margin-top: 10px; text-align: center; }
+            .nav-overlay { display: block; }
+            .nav-overlay.active { opacity: 1; }
+            .split-section { grid-template-columns: 1fr; gap: 40px; }
+            .timeline { flex-direction: column; gap: 40px; }
+            .timeline::before { width: 2px; height: 100%; left: 25px; }
+            .timeline-step { text-align: left; padding-left: 70px; }
+            .step-number { position: absolute; left: 0; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Nav Overlay for Mobile -->
     <div class="nav-overlay" id="nav-overlay"></div>
 
-    <!-- Header / Nav -->
     <header id="header">
         <div class="container nav-container">
             <a href="index.html" class="logo">
@@ -1087,232 +819,159 @@
         </div>
     </header>
 
-    <!-- Hero Section with Video Background -->
-    <section class="hero">
-        <div id="video-background">
-            <iframe width="560" height="315"
-                src="https://www.youtube.com/embed/LGUphSYEH9M?si=DHJ8kwyhztjEaQTv&amp;start=4&amp;controls=0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=LGUphSYEH9M"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-
-        <!-- Dark Overlay -->
-        <div class="hero-overlay"></div>
-
-        <!-- Content -->
-        <div class="hero-content" id="hero-content">
-            <h1>Bringing Brands & <span class="gradient-text">Stories to Life</span></h1>
-            <p>A premium digital marketing, film, and animation studio creating cinematic experiences for the modern
-                world.</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn btn-primary">Get Started</a>
-                <a href="#showcase" class="btn btn-outline" style="border-color: white; color: white;">View Work</a>
+    <main>
+        <section class="page-header">
+            <div class="bg-shape shape-1"></div>
+            <div class="bg-shape shape-2"></div>
+            <div class="container header-content reveal">
+                <h1>Our <span class="gradient-text">Creative Services</span></h1>
+                <p>We blend technology with artistry to provide comprehensive digital solutions tailored to elevate your brand's story.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Overview -->
-    <section id="services" class="section-padding">
-        <div class="container">
-            <div class="section-header text-center reveal">
-                <h2>Our Creative Expertise</h2>
-                <p>Comprehensive solutions for digital storytelling.</p>
-            </div>
-
-            <div class="services-grid">
-                <!-- Card 1 -->
-                <div class="glass-card reveal">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-bullhorn"></i>
-                    </div>
-                    <h3>Digital Marketing</h3>
-                    <p>Strategic campaigns that amplify your brand voice using data-driven insights and cutting-edge
-                        social media trends.</p>
+        <section class="section-padding">
+            <div class="container split-section">
+                <div class="text-content reveal">
+                    <h2>Digital Marketing</h2>
+                    <p>We blend data-driven strategy with creative storytelling to amplify your brand's voice across all digital platforms.</p>
+                    <ul class="service-list">
+                        <li><i class="fa-solid fa-check"></i> Social Media Management</li>
+                        <li><i class="fa-solid fa-check"></i> SEO & Content Strategy</li>
+                        <li><i class="fa-solid fa-check"></i> Brand Identity Design</li>
+                        <li><i class="fa-solid fa-check"></i> Performance Marketing</li>
+                    </ul>
                 </div>
-                <!-- Card 2 -->
-                <div class="glass-card reveal">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-clapperboard"></i>
-                    </div>
-                    <h3>Films</h3>
-                    <p>High-production cinematography and direction for commercials, short films, and corporate
-                        documentaries.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="glass-card reveal">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    </div>
-                    <h3>Animation Series</h3>
-                    <p>Immersive 2D and 3D animation that captivates audiences, from character design to full series
-                        production.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trusted By -->
-    <div class="trusted-by">
-        <div class="container">
-            <p class="text-center"
-                style="margin-bottom: 30px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">
-                Trusted By Industry Leaders</p>
-            <div class="logo-scroll-wrapper reveal">
-                <div class="logo-scroll-track">
-                    <!-- Original Set -->
-                    <div class="client-logo"><img src="ilish-truly-bong-logo.jpg" alt="Ilish Truly Bong"></div>
-                    <div class="client-logo"><img src="hitech-animation-logo.jpg" alt="Hi Tech Animation"></div>
-                    <div class="client-logo"><img src="reliance-animation-logo.jpg" alt="Reliance Animation"></div>
-                    <div class="client-logo"><img src="ilish-truly-bong-logo.jpg" alt="Ilish Truly Bong"></div>
-                    <div class="client-logo"><img src="hitech-animation-logo.jpg" alt="Hi Tech Animation"></div>
-                    <div class="client-logo"><img src="reliance-animation-logo.jpg" alt="Reliance Animation"></div>
-
-                    <!-- Duplicated Set for Seamless Scroll -->
-                    <div class="client-logo"><img src="ilish-truly-bong-logo.jpg" alt="Ilish Truly Bong"></div>
-                    <div class="client-logo"><img src="hitech-animation-logo.jpg" alt="Hi Tech Animation"></div>
-                    <div class="client-logo"><img src="reliance-animation-logo.jpg" alt="Reliance Animation"></div>
-                    <div class="client-logo"><img src="ilish-truly-bong-logo.jpg" alt="Ilish Truly Bong"></div>
-                    <div class="client-logo"><img src="hitech-animation-logo.jpg" alt="Hi Tech Animation"></div>
-                    <div class="client-logo"><img src="reliance-animation-logo.jpg" alt="Reliance Animation"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Why Choose Us -->
-    <section id="why-us" class="section-padding why-us">
-        <div class="container">
-            <div class="section-header text-center reveal">
-                <h2>Why Choose Aimax Studio?</h2>
-                <p>We blend technology with artistry.</p>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-item reveal">
-                    <div class="feature-icon"><i class="fa-solid fa-medal"></i></div>
-                    <h4>Creative Excellence</h4>
-                    <p class="text-light">Award-winning designs and storytelling techniques.</p>
-                </div>
-                <div class="feature-item reveal">
-                    <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <h4>End-to-End Production</h4>
-                    <p class="text-light">From concept to final delivery, we handle it all.</p>
-                </div>
-                <div class="feature-item reveal">
-                    <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <h4>Brand Growth</h4>
-                    <p class="text-light">Focused on ROI and tangible business results.</p>
-                </div>
-                <div class="feature-item reveal">
-                    <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
-                    <h4>Global Reach</h4>
-                    <p class="text-light">Creating content that resonates worldwide.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Industries Section -->
-    <section id="industries" class="section-padding">
-        <div class="container">
-            <div class="section-header text-center reveal">
-                <h2>Industries We Serve</h2>
-                <p>Tailored content for diverse sectors.</p>
-            </div>
-
-            <div class="industries-grid">
-                <!-- Entertainment -->
-                <div class="industry-card reveal">
-                    <img src="https://picsum.photos/seed/entertainment/600/400" alt="Entertainment">
-                    <div class="industry-overlay">
-                        <h3>Entertainment</h3>
-                        <p>Movies, Series, & Streaming</p>
-                    </div>
-                </div>
-                <!-- Corporate -->
-                <div class="industry-card reveal">
-                    <img src="https://picsum.photos/seed/corporate/600/400" alt="Corporate">
-                    <div class="industry-overlay">
-                        <h3>Corporate</h3>
-                        <p>Branding, Internal Comms, & Ads</p>
-                    </div>
-                </div>
-                <!-- Education -->
-                <div class="industry-card reveal">
-                    <img src="https://picsum.photos/seed/education/600/400" alt="Education">
-                    <div class="industry-overlay">
-                        <h3>Education</h3>
-                        <p>E-learning & EdTech Content</p>
+                <div class="visual-content reveal">
+                    <div class="dashboard-visual">
+                        <div class="mockup-header">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mockup-sidebar">
+                                <div class="sidebar-item"></div>
+                                <div class="sidebar-item"></div>
+                                <div class="sidebar-item"></div>
+                            </div>
+                            <div class="mockup-graph">
+                                <div class="bar" style="height: 40%;"></div>
+                                <div class="bar" style="height: 70%;"></div>
+                                <div class="bar" style="height: 50%;"></div>
+                                <div class="bar" style="height: 85%;"></div>
+                                <div class="bar" style="height: 60%;"></div>
+                                <div class="bar" style="height: 90%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Showcase Section -->
-    <section id="showcase" class="section-padding why-us">
-        <div class="container">
-            <div class="section-header text-center reveal">
-                <h2>Featured Showcase</h2>
-                <p>A glimpse into our portfolio.</p>
-            </div>
+        <section class="section-padding films-section">
+            <div class="container">
+                <div class="text-center reveal" style="max-width: 700px; margin: 0 auto 50px;">
+                    <h2>Cinematic Films</h2>
+                    <p>High-production visuals that capture emotion and tell your story with cinematic flair.</p>
+                </div>
 
-            <div class="showcase-grid">
-                <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/c3QtrF48R5I?si=9FZ9d8rB-KFj0fny" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/9gaN9b1gEto?si=1hdWW0tr8GB3yI1Y" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/lPclb6qcis4?si=uOfc_cxb99G-h71q" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/WkxP0qgNhGM?si=O02mFjRrKmaDFZMm" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/WkxP0qgNhGM?si=SAn4sEMcx7XYe-Af" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="showcase-item reveal">
-                    <iframe src="https://www.youtube.com/embed/LGUphSYEH9M?si=jIsZb3GTDcvVdxJy" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="films-grid">
+                    <div class="film-card reveal">
+                        <img src="https://picsum.photos/seed/film1/600/400" alt="Corporate Video">
+                        <div class="film-overlay">
+                            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="film-card reveal">
+                        <img src="https://picsum.photos/seed/film2/600/400" alt="Commercial">
+                        <div class="film-overlay">
+                            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="film-card reveal">
+                        <img src="https://picsum.photos/seed/film3/600/400" alt="Documentary">
+                        <div class="film-overlay">
+                            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section id="contact" class="cta-section reveal">
-        <div class="cta-content">
-            <h2>Ready to Bring Your Vision to Life?</h2>
-            <p>Let's create something extraordinary together.</p>
-            <button class="btn cta-btn" onclick="openContactModal()">Contact Us</button>
-        </div>
-    </section>
+        <section class="section-padding">
+            <div class="container split-section">
+                <div class="visual-content reveal">
+                    <div class="storyboard-visual">
+                        <div class="sb-card">
+                            <div class="sb-image"><img src="https://picsum.photos/seed/sb1/200/200" alt="Storyboard"></div>
+                            <div class="sb-lines"><div></div><div></div><div></div></div>
+                        </div>
+                        <div class="sb-card">
+                            <div class="sb-image"><img src="https://picsum.photos/seed/sb2/200/200" alt="Storyboard"></div>
+                            <div class="sb-lines"><div></div><div></div><div></div></div>
+                        </div>
+                        <div class="sb-card">
+                            <div class="sb-image"><img src="https://picsum.photos/seed/sb3/200/200" alt="Storyboard"></div>
+                            <div class="sb-lines"><div></div><div></div><div></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-content reveal">
+                    <h2>Animation Series</h2>
+                    <p>Immersive 2D and 3D animation that captivates audiences, from character design to full series production.</p>
+                    <ul class="service-list">
+                        <li><i class="fa-solid fa-check"></i> Character Concept Art</li>
+                        <li><i class="fa-solid fa-check"></i> Storyboard & Scripting</li>
+                        <li><i class="fa-solid fa-check"></i> 3D Modeling & Rigging</li>
+                        <li><i class="fa-solid fa-check"></i> VFX & Motion Graphics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <!-- Footer -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header text-center reveal" style="margin-bottom: 60px;">
+                    <h2>Our Creative Process</h2>
+                    <p>How we bring your ideas to life.</p>
+                </div>
+                <div class="timeline reveal">
+                    <div class="timeline-step">
+                        <div class="step-number">01</div>
+                        <h4>Discovery</h4>
+                        <p>We research your goals and define the project vision.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">02</div>
+                        <h4>Concept</h4>
+                        <p>Creating scripts, storyboards, and stylistic directions.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">03</div>
+                        <h4>Production</h4>
+                        <p>The core phase where the magic happens through craftsmanship.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">04</div>
+                        <h4>Final Polish</h4>
+                        <p>Reviewing, refining, and delivering the masterpiece.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container reveal">
+            <div class="cta-section">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Let's create something extraordinary together.</p>
+                <a href="contact.html" class="btn cta-btn-white">Work With Us</a>
+            </div>
+        </section>
+    </main>
+
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <!-- Footer Logo Column -->
                 <div class="footer-col">
                     <a href="index.html" class="footer-logo">
                         <img src="assets/logo.png" alt="Aimax Studio Logo">
@@ -1321,34 +980,33 @@
                             <span class="studio-tagline">Creative Film & Digital</span>
                         </span>
                     </a>
-                    <p style="opacity: 0.7; margin-top: 15px;">Elevating brands through the power of animation, film,
-                        and digital innovation.</p>
+                    <p style="opacity: 0.7; margin-top: 15px;">Elevating brands through the power of animation, film, and digital innovation.</p>
                 </div>
 
                 <div class="footer-col footer-info">
                     <h3>Contact Us</h3>
-                    <p><i class="fa-solid fa-envelope"></i> hello@animaxstudio.com</p>
-                    <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
-                    <p><i class="fa-solid fa-location-dot"></i> 101 Creative Blvd, Tech City, CA</p>
+                    <p><i class="fa-solid fa-envelope"></i>Aimtechimxstudio@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +91 9831739774</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Dakshin Gobindapur Rd, Dakshin Gobindopur, Rajpur Sonarpur, Jaynagar, West Bengal 700145</p>
                 </div>
 
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="about.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">About Us</a>
-                        <a href="services.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Services</a>
-                        <a href="portfolio.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Portfolio</a>
-                        <a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Contact</a>
+                        <a href="about.html" style="color: rgba(255,255,255,0.7);">About Us</a>
+                        <a href="services.html" style="color: rgba(255,255,255,0.7);">Services</a>
+                        <a href="portfolio.html" style="color: rgba(255,255,255,0.7);">Portfolio</a>
+                        <a href="contact.html" style="color: rgba(255,255,255,0.7);">Contact</a>
                     </div>
                 </div>
 
                 <div class="footer-col">
                     <h3>Follow Us</h3>
-                    <div class="social-icons" style="margin-top: 15px;">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@aimtechanimation"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -1358,69 +1016,15 @@
         </div>
     </footer>
 
-    <!-- Simple Modal for Contact -->
-    <div id="contact-modal"
-        style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center;">
-        <div
-            style="background: white; padding: 40px; border-radius: 15px; max-width: 500px; width: 90%; position: relative; animation: slideUp 0.3s ease;">
-            <span onclick="closeContactModal()"
-                style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #64748b; line-height: 1;">&times;</span>
-            <h3 style="color: var(--deep-blue); margin-bottom: 20px;">Get in Touch</h3>
-            <form onsubmit="handleFormSubmit(event)">
-                <input type="text" placeholder="Your Name" required
-                    style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter'; font-size: 0.95rem;">
-                <input type="email" placeholder="Your Email" required
-                    style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter'; font-size: 0.95rem;">
-                <textarea placeholder="Project Details" rows="4"
-                    style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 8px; font-family: 'Inter'; font-size: 0.95rem; resize: vertical;"></textarea>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast"
-        style="visibility: hidden; min-width: 250px; background-color: var(--deep-blue); color: #fff; text-align: center; border-radius: 8px; padding: 16px; position: fixed; z-index: 3000; left: 50%; bottom: 30px; transform: translateX(-50%); box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-        Message Sent Successfully!</div>
-
     <script>
-        // --- 1. Scroll Reveal Animation ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const heroContent = document.getElementById('hero-content');
-
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            root: null,
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // Hero Animation
-        setTimeout(() => {
-            heroContent.style.opacity = "1";
-            heroContent.style.transform = "translateY(0)";
-            heroContent.style.transition = "all 1s ease-out";
-        }, 500);
-
-        // --- 2. Header Scroll Effect ---
+        // Header Scroll
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         });
 
-        // --- 3. Mobile Menu Toggle ---
+        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navLinks = document.getElementById('nav-links');
         const navOverlay = document.getElementById('nav-overlay');
@@ -1431,90 +1035,24 @@
             mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
             navOverlay.classList.toggle('active');
-
-            // Prevent body scroll when menu is open
             document.body.style.overflow = menuOpen ? 'hidden' : '';
         }
 
-        function closeMenu() {
-            if (menuOpen) {
-                menuOpen = false;
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-
         mobileMenuBtn.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
 
-        navOverlay.addEventListener('click', closeMenu);
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
 
-        // Close menu on link click
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Close menu on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeMenu();
-                closeContactModal();
-            }
-        });
-
-        // Close menu on window resize to desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                closeMenu();
-            }
-        });
-
-        // --- 4. Modal & Toast Interactions ---
-        const modal = document.getElementById('contact-modal');
-        const toast = document.getElementById('toast');
-
-        function openContactModal() {
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeContactModal() {
-            modal.style.display = 'none';
-            if (!menuOpen) {
-                document.body.style.overflow = '';
-            }
-        }
-
-        window.addEventListener('click', function (event) {
-            if (event.target == modal) {
-                closeContactModal();
-            }
-        });
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            closeContactModal();
-            toast.style.visibility = "visible";
-            toast.className = "show";
-            setTimeout(function () {
-                toast.style.visibility = "hidden";
-                toast.className = toast.className.replace("show", "");
-            }, 3000);
-            e.target.reset();
-        }
-
-        // Add Modal Animation Keyframes
-        const styleSheet = document.createElement("style");
-        styleSheet.innerText = `
-            @keyframes slideUp {
-                from { transform: translateY(50px); opacity: 0; }
-                to { transform: translateY(0); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(styleSheet);
+        revealElements.forEach(el => observer.observe(el));
     </script>
-
 </body>
-
 </html>
