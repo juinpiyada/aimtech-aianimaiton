@@ -3,56 +3,56 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     
     <url>
-        <loc>https://www.animaxstudio.com/</loc>
+        <loc>https://juinpiyada.github.io/aimtech-aianimaiton/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://www.animaxstudio.com/assets/logo.png</image:loc>
+            <image:loc>https://juinpiyada.github.io/aimtech-aianimaiton/assets/logo.png</image:loc>
             <image:title>Animax Studio Logo</image:title>
         </image:image>
         <image:image>
-            <image:loc>https://www.animaxstudio.com/ilish-truly-bong-logo.jpg</image:loc>
+            <image:loc>https://juinpiyada.github.io/aimtech-aianimaiton/ilish-truly-bong-logo.jpg</image:loc>
         </image:image>
         <image:image>
-            <image:loc>https://www.animaxstudio.com/reliance-animation-logo.jpg</image:loc>
+            <image:loc>https://juinpiyada.github.io/aimtech-aianimaiton/reliance-animation-logo.jpg</image:loc>
         </image:image>
         <image:image>
-            <image:loc>https://www.animaxstudio.com/hitech-animation-logo.jpg</image:loc>
+            <image:loc>https://juinpiyada.github.io/aimtech-aianimaiton/hitech-animation-logo.jpg</image:loc>
         </image:image>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/about</loc>
+        <loc>https://juinpiyada.github.io/aimtech-aianimaiton/about.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/services</loc>
+        <loc>https://juinpiyada.github.io/aimtech-aianimaiton/services.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/portfolio</loc>
+        <loc>https://juinpiyada.github.io/aimtech-aianimaiton/portfolio.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/contact</loc>
+        <loc>https://juinpiyada.github.io/aimtech-aianimaiton/contact.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/login</loc>
+        <loc>https://juinpiyada.github.io/aimtech-aianimaiton/login.html</loc>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/signup</loc>
+        <loc>https://juinpiyada.github.io/aimtech-aianimaiton/signup.html</loc>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
