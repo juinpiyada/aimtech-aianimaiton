@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     
     <url>
-        <loc>https://www.animaxstudio.com/index.html</loc>
+        <loc>https://www.animaxstudio.com/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -22,37 +22,37 @@
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/about.html</loc>
+        <loc>https://www.animaxstudio.com/about</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/services.html</loc>
+        <loc>https://www.animaxstudio.com/services</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/portfolio.html</loc>
+        <loc>https://www.animaxstudio.com/portfolio</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/contact.html</loc>
+        <loc>https://www.animaxstudio.com/contact</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/login.html</loc>
+        <loc>https://www.animaxstudio.com/login</loc>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
-        <loc>https://www.animaxstudio.com/signup.html</loc>
+        <loc>https://www.animaxstudio.com/signup</loc>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
