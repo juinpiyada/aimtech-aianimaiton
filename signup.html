@@ -531,20 +531,41 @@
 
     </div>
 
-    <script>
-        function handleSignup(e) {
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD-XOkvwPPIVzJ7gxCJd-tnX0vVWTjNhgs",
+            authDomain: "aimax-studio.firebaseapp.com",
+            databaseURL: "https://aimax-studio-default-rtdb.firebaseio.com",
+            projectId: "aimax-studio",
+            storageBucket: "aimax-studio.firebasestorage.app",
+            messagingSenderId: "328019026496",
+            appId: "1:328019026496:web:4d53f676066912ba55b5a5",
+            measurementId: "G-7CSP0W7J4X"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        // Standard signup handler exposed to window for inline onclick use
+        window.handleSignup = function(e) {
             e.preventDefault();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
             const btn = document.querySelector('.btn-signup');
 
-            // Simple Validation
             if (password !== confirmPassword) {
                 alert("Passwords do not match!");
                 return;
             }
 
-            // Simulate Loading
             const originalText = btn.innerText;
             btn.innerText = 'Creating Account...';
             btn.style.opacity = '0.8';
@@ -555,14 +576,26 @@
                 btn.style.opacity = '1';
                 btn.disabled = false;
                 alert("Account created successfully! Welcome to Aimax Studio.");
-                // Here you would typically redirect to the dashboard
             }, 1500);
-        }
+        };
 
-        function socialLogin(platform) {
-            // Placeholder for OAuth logic
-            alert(`Connecting to ${platform}...`);
-        }
+        // Social login handler exposed to window
+        window.socialLogin = function(platform) {
+            if (platform === 'Google') {
+                signInWithPopup(auth, provider)
+                    .then((result) => {
+                        const user = result.user;
+                        alert("Successfully signed in with Google as: " + user.displayName);
+                        // Redirect logic here if needed
+                        // window.location.href = 'dashboard.html';
+                    }).catch((error) => {
+                        console.error('Google Sign-In Error:', error);
+                        alert("Google Sign-In Failed: " + error.message);
+                    });
+            } else {
+                alert(`Connecting to ${platform}...`);
+            }
+        };
     </script>
 </body>
 </html>
