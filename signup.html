@@ -14,6 +14,9 @@
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <style>
         /* --- CSS Variables & Reset --- */
@@ -531,6 +534,9 @@
 
     </div>
 
+    <!-- Toastify JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
@@ -585,15 +591,49 @@
                 signInWithPopup(auth, provider)
                     .then((result) => {
                         const user = result.user;
-                        alert("Successfully signed in with Google as: " + user.displayName);
-                        // Redirect logic here if needed
-                        // window.location.href = 'dashboard.html';
+                        
+                        // Save to localStorage
+                        localStorage.setItem('user', JSON.stringify({
+                            displayName: user.displayName,
+                            email: user.email,
+                            photoURL: user.photoURL
+                        }));
+
+                        Toastify({
+                            text: `Successfully signed in as ${user.displayName}!`,
+                            duration: 1500,
+                            gravity: "bottom",
+                            position: "center",
+                            style: {
+                                background: "#1E3A8A",
+                                borderRadius: "8px",
+                                padding: "16px",
+                            }
+                        }).showToast();
+
+                        // Redirect to index
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+
                     }).catch((error) => {
                         console.error('Google Sign-In Error:', error);
-                        alert("Google Sign-In Failed: " + error.message);
+                        Toastify({
+                            text: `Google Sign-In Failed: ${error.message}`,
+                            duration: 3000,
+                            gravity: "bottom",
+                            position: "center",
+                            style: { background: "#e84118", borderRadius: "8px", padding: "16px" }
+                        }).showToast();
                     });
             } else {
-                alert(`Connecting to ${platform}...`);
+                Toastify({
+                    text: `Connecting to ${platform}...`,
+                    duration: 2000,
+                    gravity: "bottom",
+                    position: "center",
+                    style: { background: "#1E3A8A", borderRadius: "8px", padding: "16px" }
+                }).showToast();
             }
         };
     </script>
