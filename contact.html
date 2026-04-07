@@ -635,6 +635,8 @@
 
     <div id="toast">Message Sent Successfully!</div>
 
+    <!-- SMTP.js for plain javascript client-side email sending -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
@@ -663,12 +665,83 @@
         function handleFormSubmit(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
             const projectType = document.getElementById('projectType').value;
-            const toast = document.getElementById("toast");
-            toast.innerText = `Thanks ${name}, we received your ${projectType} request!`;
-            toast.className = "show";
-            document.getElementById("contactForm").reset();
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            const messageText = document.getElementById('message').value;
+
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+
+            const studioMailBody = `
+                <h3>New Contact Request</h3>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+                <p><strong>Project Type:</strong> ${projectType}</p>
+                <p><strong>Message:</strong></p>
+                <p>${messageText}</p>
+            `;
+
+            const userMailBody = `
+                <h3>Hello ${name},</h3>
+                <p>Thank you for your kind response and for reaching out to Aimax Studio. We have received your request regarding <strong>${projectType}</strong>.</p>
+                <p>Our team will review your project details and get back to you shortly.</p>
+                <br>
+                <p>Best Regards,</p>
+                <p><strong>Aimax Studio Team</strong></p>
+            `;
+
+            // Note: Exposing the Gmail App Password in plain clientside code is technically a security risk, 
+            // but implemented per your instructions for a pure frontend JS solution using SMTP.js.
+            
+            // 1. Send Email to Studio
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "aimtechimxstudio@gmail.com",
+                Password: "jpnh esdf lzab nvgo",
+                To: "aimtechimxstudio@gmail.com",
+                From: "aimtechimxstudio@gmail.com",
+                Subject: `New Request from ${name} - ${projectType}`,
+                Body: studioMailBody
+            }).then(
+                function (message1) {
+                    if(message1 !== "OK") {
+                        alert("Error: " + message1);
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                        return;
+                    }
+                    // 2. Send Thank You Email to User
+                    Email.send({
+                        Host: "smtp.gmail.com",
+                        Username: "aimtechimxstudio@gmail.com",
+                        Password: "jpnh esdf lzab nvgo",
+                        To: email,
+                        From: "aimtechimxstudio@gmail.com",
+                        Subject: "Thank you for contacting Aimax Studio!",
+                        Body: userMailBody
+                    }).then(
+                        function (message2) {
+                            const toast = document.getElementById("toast");
+                            toast.innerText = `Thanks ${name}, we received your ${projectType} request!`;
+                            toast.className = "show";
+                            document.getElementById("contactForm").reset();
+                            
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                            
+                            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+                        }
+                    );
+                }
+            ).catch(function(error) {
+                alert("Error sending email: " + error);
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
         }
     </script>
 </body>
