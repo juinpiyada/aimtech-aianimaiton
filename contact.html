@@ -1121,7 +1121,7 @@
             const textBody = `New Contact Request\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nProject Type: ${projectType}\n\nMessage:\n${message}`;
 
             try {
-                const response = await fetch('https://mail-sender-v3.onrender.com/send', {
+                const response = await fetch('https://mail-sent-v3.aatkart.com/api/mail/send', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
