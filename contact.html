@@ -18,18 +18,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CSS Variables & Reset --- */
+        /* --- Aimax Studio Global Color Theme --- */
         :root {
-            --primary-blue: #0A84FF;
-            --deep-blue: #1E3A8A;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            --gradient-main: linear-gradient(135deg, #0A84FF 0%, #1E3A8A 100%);
+            /* Backgrounds */
+            --black: #0a0a0a;            /* Brand Main Black */
+            --bg-dark-card: #141414;     /* Lighter black for cards/sections */
+            
+            /* Brand Colors */
+            --bright-red: #de372e;       /* Brand Bright Red */
+            --dark-red: #bf0a1e;         /* Brand Dark Red */
+            
+            /* Typography */
+            --white: #ffffff;            /* Headings */
+            --text-dark: #ffffff;        /* Main text for dark mode */
+            --text-light: #a0aec0;       /* Muted gray for body text */
+
+            /* Gradients & Animations */
+            --gradient-main: linear-gradient(135deg, #de372e 0%, #bf0a1e 100%);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* Extras */
+            --glass-bg: rgba(20, 20, 20, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -42,10 +53,11 @@
             scroll-behavior: smooth;
         }
 
+        /* Base Body Application */
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            background-color: #f8fafc;
+            background-color: var(--black);
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -57,6 +69,7 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             line-height: 1.2;
+            color: var(--white);
         }
 
         a {
@@ -117,12 +130,12 @@
         .btn-primary {
             background: var(--gradient-main);
             color: var(--white);
-            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(222, 55, 46, 0.3);
         }
 
         .btn-primary:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(10, 132, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(222, 55, 46, 0.5);
         }
 
         .btn-primary:disabled {
@@ -137,15 +150,16 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(10, 10, 10, 0.85); /* Black transparent */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid var(--glass-border);
             transition: var(--transition);
         }
 
         header.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            background: rgba(10, 10, 10, 0.98);
         }
 
         .nav-container {
@@ -159,7 +173,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--deep-blue);
+            color: var(--white);
             display: flex;
             align-items: center;
             gap: 14px;
@@ -184,7 +198,7 @@
         .logo-caption .studio-name {
             font-size: 1.4rem;
             font-weight: 800;
-            color: var(--deep-blue);
+            color: var(--white);
             letter-spacing: -0.3px;
         }
 
@@ -217,7 +231,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background: var(--primary-blue);
+            background: var(--bright-red);
             transition: var(--transition);
         }
 
@@ -234,7 +248,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             transition: var(--transition);
-            box-shadow: 0 2px 10px rgba(10, 132, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(222, 55, 46, 0.3);
         }
 
         .nav-btn-signup::after {
@@ -243,7 +257,7 @@
 
         .nav-btn-login {
             font-weight: 600 !important;
-            color: var(--deep-blue) !important;
+            color: var(--white) !important;
         }
 
         /* Hamburger Icon */
@@ -267,7 +281,7 @@
             display: block;
             width: 24px;
             height: 2.5px;
-            background: var(--deep-blue);
+            background: var(--white);
             border-radius: 2px;
             transition: all 0.3s ease;
         }
@@ -290,7 +304,7 @@
             padding-top: 180px;
             padding-bottom: 80px;
             text-align: center;
-            background: radial-gradient(circle at 50% 0%, #f0f9ff, #fff);
+            background: radial-gradient(circle at 50% 0%, #1a0505, var(--black)); /* Dark Red Tint */
             position: relative;
             overflow: hidden;
         }
@@ -299,7 +313,7 @@
             position: absolute;
             width: 400px;
             height: 400px;
-            background: rgba(10, 132, 255, 0.05);
+            background: rgba(222, 55, 46, 0.1); /* Red tint */
             border-radius: 50%;
             filter: blur(80px);
             z-index: 0;
@@ -308,12 +322,13 @@
         .shape-1 {
             top: -100px;
             right: -100px;
+            background: var(--bright-red);
         }
 
         .shape-2 {
             bottom: 0;
             left: -100px;
-            background: rgba(30, 58, 138, 0.05);
+            background: var(--dark-red);
         }
 
         .header-content {
@@ -325,7 +340,7 @@
 
         .header-content h1 {
             font-size: 3.5rem;
-            color: var(--deep-blue);
+            color: var(--white);
             margin-bottom: 20px;
         }
 
@@ -339,16 +354,17 @@
             display: grid;
             grid-template-columns: 1.5fr 1fr;
             gap: 40px;
-            background: var(--white);
+            background: var(--bg-dark-card);
             border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--glass-border);
             margin-top: 50px;
         }
 
         .contact-form-section {
             padding: 60px;
+            background: var(--bg-dark-card);
         }
 
         .form-group {
@@ -359,31 +375,31 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--text-dark);
+            color: var(--white);
             font-size: 0.9rem;
         }
 
         .form-control {
             width: 100%;
             padding: 14px 20px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #333;
             border-radius: 12px;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            color: var(--text-dark);
-            background: #f8fafc;
+            color: var(--white);
+            background: #0a0a0a;
             transition: var(--transition);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-blue);
-            background: var(--white);
-            box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.1);
+            border-color: var(--bright-red);
+            background: #141414;
+            box-shadow: 0 0 0 4px rgba(222, 55, 46, 0.1);
         }
 
         .form-control::placeholder {
-            color: #94a3b8;
+            color: #64748b;
         }
 
         textarea.form-control {
@@ -403,7 +419,7 @@
 
         /* Info Section */
         .contact-info-section {
-            background: var(--deep-blue);
+            background: linear-gradient(145deg, #de372e 0%, #8b0e12 100%); /* Red Gradient */
             color: white;
             padding: 60px;
             display: flex;
@@ -417,7 +433,7 @@
         }
 
         .info-header p {
-            opacity: 0.7;
+            opacity: 0.8;
             margin-bottom: 40px;
         }
 
@@ -436,19 +452,19 @@
         .info-icon {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            color: var(--primary-blue);
+            color: var(--white);
             flex-shrink: 0;
             transition: var(--transition);
         }
 
         .info-item:hover .info-icon {
-            background: rgba(10, 132, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             transform: scale(1.05);
         }
 
@@ -459,7 +475,7 @@
         }
 
         .info-details p {
-            opacity: 0.7;
+            opacity: 0.8;
             font-size: 0.95rem;
         }
 
@@ -477,12 +493,12 @@
             width: 100%;
             height: 100%;
             border: 0;
-            filter: grayscale(20%);
+            filter: grayscale(100%) invert(90%); /* Dark mode map filter */
             transition: var(--transition);
         }
 
         .map-container:hover iframe {
-            filter: grayscale(0%);
+            filter: grayscale(0%) invert(0%);
         }
 
         /* Toast Notification */
@@ -498,7 +514,7 @@
             left: 50%;
             bottom: 30px;
             transform: translateX(-50%) translateY(20px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
@@ -506,6 +522,9 @@
             gap: 14px;
             font-size: 0.95rem;
             line-height: 1.4;
+            background: var(--bg-dark-card);
+            color: var(--white);
+            border: 1px solid var(--glass-border);
         }
 
         #toast.show {
@@ -516,14 +535,10 @@
         }
 
         #toast.toast-success {
-            background: var(--white);
-            color: var(--text-dark);
             border-left: 4px solid #22c55e;
         }
 
         #toast.toast-error {
-            background: var(--white);
-            color: var(--text-dark);
             border-left: 4px solid #ef4444;
         }
 
@@ -539,12 +554,12 @@
         }
 
         .toast-success .toast-icon {
-            background: rgba(34, 197, 94, 0.1);
+            background: rgba(34, 197, 94, 0.2);
             color: #22c55e;
         }
 
         .toast-error .toast-icon {
-            background: rgba(239, 68, 68, 0.1);
+            background: rgba(239, 68, 68, 0.2);
             color: #ef4444;
         }
 
@@ -557,6 +572,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.95rem;
             margin-bottom: 2px;
+            color: var(--white);
         }
 
         #toast .toast-msg {
@@ -576,7 +592,7 @@
         }
 
         #toast .toast-close:hover {
-            color: var(--text-dark);
+            color: var(--white);
         }
 
         /* Progress bar inside button */
@@ -593,10 +609,11 @@
 
         /* --- Footer --- */
         footer {
-            background: var(--deep-blue);
+            background: var(--black);
             color: var(--white);
             padding: 80px 0 30px;
             margin-top: 80px;
+            border-top: 1px solid var(--glass-border);
         }
 
         .footer-grid {
@@ -653,7 +670,7 @@
         }
 
         .footer-info i {
-            color: var(--primary-blue);
+            color: var(--bright-red);
         }
 
         .social-icons {
@@ -674,7 +691,7 @@
         }
 
         .social-icons a:hover {
-            background: var(--primary-blue);
+            background: var(--bright-red);
             transform: translateY(-3px);
             color: white;
         }
@@ -726,14 +743,15 @@
                 right: 0;
                 width: 280px;
                 height: 100vh;
-                background: var(--white);
+                background: var(--bg-dark-card);
                 flex-direction: column;
                 padding: 90px 30px 40px;
                 transform: translateX(100%);
                 transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
                 z-index: 999;
                 align-items: stretch;
-                box-shadow: -10px 0 20px rgba(0, 0, 0, 0.05);
+                box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
+                border-left: 1px solid var(--glass-border);
             }
 
             .nav-links.active {
@@ -1079,37 +1097,37 @@
 
             setLoading(true);
 
-            // Build HTML email body
+            // Build HTML email body (Updated to Red/Black Theme)
             const htmlBody = `
-                <div style="font-family: 'Inter', Arial, sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto;">
-                    <div style="background: linear-gradient(135deg, #0A84FF 0%, #1E3A8A 100%); padding: 30px; border-radius: 16px 16px 0 0;">
+                <div style="font-family: 'Inter', Arial, sans-serif; color: #ffffff; max-width: 600px; margin: 0 auto;">
+                    <div style="background: linear-gradient(135deg, #de372e 0%, #bf0a1e 100%); padding: 30px; border-radius: 16px 16px 0 0;">
                         <h2 style="color: #fff; margin: 0; font-size: 1.4rem;">New Contact Request</h2>
-                        <p style="color: rgba(255,255,255,0.7); margin: 5px 0 0; font-size: 0.9rem;">Submitted via Aimax Studio Contact Form</p>
+                        <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0; font-size: 0.9rem;">Submitted via Aimax Studio Contact Form</p>
                     </div>
-                    <div style="background: #ffffff; padding: 30px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 16px 16px;">
+                    <div style="background: #141414; padding: 30px; border: 1px solid #333; border-top: none; border-radius: 0 0 16px 16px;">
                         <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
                             <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-weight: 500; width: 130px;">Name</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-weight: 600;">${escapeHtml(name)}</td>
+                                <td style="padding: 12px 0; border-bottom: 1px solid #333; color: #a0aec0; font-weight: 500; width: 130px;">Name</td>
+                                <td style="padding: 12px 0; border-bottom: 1px solid #333; font-weight: 600;">${escapeHtml(name)}</td>
                             </tr>
                             <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-weight: 500;">Email</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;">
-                                    <a href="mailto:${escapeHtml(email)}" style="color: #0A84FF; text-decoration: none;">${escapeHtml(email)}</a>
+                                <td style="padding: 12px 0; border-bottom: 1px solid #333; color: #a0aec0; font-weight: 500;">Email</td>
+                                <td style="padding: 12px 0; border-bottom: 1px solid #333;">
+                                    <a href="mailto:${escapeHtml(email)}" style="color: #de372e; text-decoration: none;">${escapeHtml(email)}</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-weight: 500;">Phone</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;">${phone ? escapeHtml(phone) : '<span style="color:#94a3b8;">Not provided</span>'}</td>
+                                <td style="padding: 12px 0; border-bottom: 1px solid #333; color: #a0aec0; font-weight: 500;">Phone</td>
+                                <td style="padding: 12px 0; border-bottom: 1px solid #333;">${phone ? escapeHtml(phone) : '<span style="color:#64748b;">Not provided</span>'}</td>
                             </tr>
                             <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-weight: 500;">Project Type</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;">
-                                    <span style="background: rgba(10,132,255,0.1); color: #0A84FF; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">${escapeHtml(projectType)}</span>
+                                <td style="padding: 12px 0; border-bottom: 1px solid #333; color: #a0aec0; font-weight: 500;">Project Type</td>
+                                <td style="padding: 12px 0; border-bottom: 1px solid #333;">
+                                    <span style="background: rgba(222, 55, 46, 0.2); color: #de372e; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">${escapeHtml(projectType)}</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding: 12px 0; color: #64748b; font-weight: 500; vertical-align: top;">Message</td>
+                                <td style="padding: 12px 0; color: #a0aec0; font-weight: 500; vertical-align: top;">Message</td>
                                 <td style="padding: 12px 0; line-height: 1.6;">${escapeHtml(message).replace(/\n/g, '<br>')}</td>
                             </tr>
                         </table>
