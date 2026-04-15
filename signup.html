@@ -21,15 +21,14 @@
     <style>
         /* --- CSS Variables & Reset --- */
         :root {
-            --primary-blue: #0A84FF;
-            --deep-blue: #1E3A8A;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
+            --black: #0a0a0a;
+            --dark-red: #bf0a1e;
+            --bright-red: #de372e;
             --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            --gradient-main: linear-gradient(135deg, #0A84FF 0%, #1E3A8A 100%);
+            --text-dark: #ffffff;
+            --text-light: #a0aec0;
+            --bg-dark-card: #141414;
+            --gradient-main: linear-gradient(135deg, #de372e 0%, #bf0a1e 100%);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -42,7 +41,7 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            background-color: #f0f4f8;
+            background-color: var(--black);
             height: 100vh;
             overflow: hidden;
             display: flex;
@@ -58,7 +57,7 @@
         /* --- Left Side: Branding & Animation --- */
         .left-branding {
             flex: 1;
-            background: linear-gradient(135deg, var(--deep-blue) 0%, #0f172a 100%);
+            background: linear-gradient(135deg, var(--black) 0%, #111 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -66,6 +65,7 @@
             position: relative;
             overflow: hidden;
             color: var(--white);
+            border-right: 1px solid rgba(255,255,255,0.05);
         }
 
         /* Ambient Background Effects */
@@ -144,7 +144,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            box-shadow: 0 0 30px rgba(10, 132, 255, 0.1);
+            box-shadow: 0 0 30px rgba(222, 55, 46, 0.1);
         }
 
         .film-reel::before {
@@ -179,7 +179,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 30px rgba(10, 132, 255, 0.4);
+            box-shadow: 0 0 30px rgba(222, 55, 46, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 3;
         }
@@ -187,7 +187,7 @@
         /* --- Right Side: Form --- */
         .right-form {
             flex: 1;
-            background: #f8fafc;
+            background: var(--black);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -196,11 +196,11 @@
             overflow: hidden;
         }
 
-        .soft-blue-glow {
+        .soft-red-glow {
             position: absolute;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(10, 132, 255, 0.2) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(222, 55, 46, 0.2) 0%, rgba(255,255,255,0) 70%);
             border-radius: 50%;
             z-index: 0;
             animation: breathe 6s infinite ease-in-out;
@@ -210,11 +210,11 @@
         .glass-card {
             width: 100%;
             max-width: 460px;
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border-radius: 24px;
             padding: 40px;
             z-index: 1;
@@ -230,7 +230,7 @@
         .form-header h2 {
             font-family: 'Poppins', sans-serif;
             font-size: 2rem;
-            color: var(--deep-blue);
+            color: var(--white);
             margin-bottom: 8px;
         }
 
@@ -239,178 +239,45 @@
             font-size: 0.95rem;
         }
 
-        .input-group {
-            margin-bottom: 18px;
-            position: relative;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 6px;
-            margin-left: 2px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 12px 15px 12px 40px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            transition: var(--transition);
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.1);
-            background: white;
-        }
-
-        .input-icon {
-            position: absolute;
-            left: 14px;
-            top: 38px;
-            color: #94a3b8;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .input-field:focus + .input-icon, 
-        .input-field:focus ~ .input-icon {
-            color: var(--primary-blue);
-        }
-
-        .terms-group {
-            margin-bottom: 25px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .terms-group input {
-            margin-top: 3px;
-            accent-color: var(--primary-blue);
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-        }
-
-        .terms-group a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .btn-signup {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            background: var(--gradient-main);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-signup::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-signup:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(10, 132, 255, 0.4);
-        }
-
-        .btn-signup:hover::after {
-            left: 100%;
-        }
-
-        /* Divider */
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 25px 0;
-            color: #94a3b8;
-            font-size: 0.8rem;
-        }
-
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: #cbd5e1;
-        }
-
-        .divider span {
-            padding: 0 10px;
-        }
-
-        /* Social Buttons */
-        .social-login {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .social-btn {
+        .btn-google {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            background: white;
-            color: var(--text-dark);
-            font-size: 0.9rem;
+            gap: 12px;
+            width: 100%;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: 'Poppins', sans-serif;
             font-weight: 500;
+            font-size: 1rem;
             cursor: pointer;
             transition: var(--transition);
         }
 
-        .social-btn i {
-            font-size: 1.1rem;
+        .btn-google:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .social-btn:hover {
-            background: #f1f5f9;
-            border-color: #94a3b8;
-            transform: translateY(-1px);
+        .btn-google i {
+            color: #ea4335;
+            font-size: 1.2rem;
         }
-
-        .social-btn.google:hover i { color: #DB4437; }
-        .social-btn.linkedin:hover i { color: #0077B5; }
 
         .form-footer {
             text-align: center;
+            margin-top: 25px;
             font-size: 0.9rem;
             color: var(--text-light);
         }
 
         .form-footer a {
-            color: var(--primary-blue);
+            color: var(--bright-red);
             font-weight: 600;
             text-decoration: none;
         }
@@ -421,7 +288,7 @@
 
         /* --- Animations --- */
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes pulseIcon { 0%, 100% { transform: scale(1); text-shadow: 0 0 10px rgba(10,132,255,0.5); } 50% { transform: scale(1.1); text-shadow: 0 0 25px rgba(10,132,255,0.8); } }
+        @keyframes pulseIcon { 0%, 100% { transform: scale(1); text-shadow: 0 0 10px rgba(222, 55, 46,0.5); } 50% { transform: scale(1.1); text-shadow: 0 0 25px rgba(222, 55, 46,0.8); } }
         @keyframes floatGlow { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, 20px); } }
         @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -429,9 +296,9 @@
         /* --- Responsive --- */
         @media (max-width: 900px) {
             .left-branding { display: none; }
-            .right-form { background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%); padding: 20px; }
-            .soft-blue-glow { width: 300px; height: 300px; }
-            .glass-card { background: rgba(255, 255, 255, 0.9); box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+            .right-form { background: var(--black); padding: 20px; }
+            .soft-red-glow { width: 300px; height: 300px; }
+            .glass-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
             body { overflow-y: auto; height: auto; min-height: 100vh; }
         }
     </style>
@@ -463,67 +330,19 @@
 
         <!-- Right Side: Sign Up Form -->
         <div class="right-form">
-            <div class="soft-blue-glow"></div>
+            <div class="soft-red-glow"></div>
             
             <div class="glass-card">
                 <div class="form-header">
                     <h2>Create Account</h2>
-                    <p>Join Aimax Studio to start your creative journey.</p>
+                    <p>Join Aimax Studio securely using your Google account.</p>
                 </div>
 
-                <form id="signupForm" onsubmit="handleSignup(event)">
-                    <!-- Full Name -->
-                    <div class="input-group">
-                        <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" class="input-field" placeholder="John Doe" required>
-                        <i class="fa-regular fa-user input-icon"></i>
-                    </div>
-
-                    <!-- Email -->
-                    <div class="input-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" class="input-field" placeholder="name@company.com" required>
-                        <i class="fa-regular fa-envelope input-icon"></i>
-                    </div>
-
-                    <!-- Password -->
-                    <div class="input-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" class="input-field" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
-                        <i class="fa-solid fa-lock input-icon"></i>
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div class="input-group">
-                        <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" class="input-field" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
-                        <i class="fa-solid fa-lock input-icon"></i>
-                    </div>
-
-                    <!-- Terms & Conditions -->
-                    <div class="terms-group">
-                        <input type="checkbox" id="terms" required>
-                        <label for="terms" style="margin:0; font-weight:400;">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.</label>
-                    </div>
-
-                    <!-- CTA Button -->
-                    <button type="submit" class="btn-signup">Create Account</button>
-                </form>
-
-                <!-- Divider -->
-                <div class="divider">
-                    <span>Or sign up with</span>
-                </div>
-
-                <!-- Social Login -->
-                <div class="social-login">
-                    <div class="social-btn google" onclick="socialLogin('Google')">
-                        <i class="fa-brands fa-google"></i> Google
-                    </div>
-                    <div class="social-btn linkedin" onclick="socialLogin('LinkedIn')">
-                        <i class="fa-brands fa-linkedin-in"></i> LinkedIn
-                    </div>
-                </div>
+                <!-- Google Auth CTA -->
+                <button type="button" class="btn-google" onclick="window.socialLogin('Google')">
+                    <i class="fa-brands fa-google"></i>
+                    Sign up with Google
+                </button>
 
                 <!-- Footer -->
                 <div class="form-footer">
@@ -605,7 +424,7 @@
                             gravity: "bottom",
                             position: "center",
                             style: {
-                                background: "#1E3A8A",
+                                background: "#0a0a0a",
                                 borderRadius: "8px",
                                 padding: "16px",
                             }
@@ -632,7 +451,7 @@
                     duration: 2000,
                     gravity: "bottom",
                     position: "center",
-                    style: { background: "#1E3A8A", borderRadius: "8px", padding: "16px" }
+                    style: { background: "#0a0a0a", borderRadius: "8px", padding: "16px" }
                 }).showToast();
             }
         };
