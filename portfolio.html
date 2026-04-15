@@ -18,18 +18,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CSS Variables & Reset --- */
+        /* --- Aimax Studio Global Color Theme --- */
         :root {
-            --primary-blue: #0A84FF;
-            --deep-blue: #1E3A8A;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            --gradient-main: linear-gradient(135deg, #0A84FF 0%, #1E3A8A 100%);
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* Backgrounds */
+            --black: #0a0a0a;            /* Brand Main Black */
+            --bg-dark-card: #141414;     /* Lighter black for cards/sections */
+            
+            /* Brand Colors */
+            --bright-red: #de372e;       /* Brand Bright Red */
+            --dark-red: #bf0a1e;         /* Brand Dark Red */
+            
+            /* Typography */
+            --white: #ffffff;            /* Headings */
+            --text-dark: #ffffff;        /* Main text for dark mode */
+            --text-light: #a0aec0;       /* Muted gray for body text */
+
+            /* Gradients & Animations */
+            --gradient-main: linear-gradient(135deg, #de372e 0%, #bf0a1e 100%);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* Extras */
+            --glass-bg: rgba(20, 20, 20, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -42,10 +53,11 @@
             scroll-behavior: smooth;
         }
 
+        /* Base Body Application */
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            background-color: #f8fafc;
+            background-color: var(--black);
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -57,6 +69,7 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             line-height: 1.2;
+            color: var(--white);
         }
 
         a {
@@ -91,7 +104,9 @@
         .gradient-text {
             background: var(--gradient-main);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
 
         .btn {
@@ -107,12 +122,12 @@
             border: 2px solid transparent;
             background: var(--gradient-main);
             color: var(--white);
-            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(222, 55, 46, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(10, 132, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(222, 55, 46, 0.5);
         }
 
         /* --- Header --- */
@@ -122,15 +137,16 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid var(--glass-border);
             transition: var(--transition);
         }
 
         header.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            background: rgba(10, 10, 10, 0.98);
         }
 
         .nav-container {
@@ -144,7 +160,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--deep-blue);
+            color: var(--white);
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
@@ -174,7 +190,7 @@
         .logo-caption .studio-name {
             font-size: 1.4rem;
             font-weight: 800;
-            color: var(--deep-blue);
+            color: var(--white);
             letter-spacing: -0.3px;
         }
 
@@ -207,7 +223,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background: var(--primary-blue);
+            background: var(--bright-red);
             transition: var(--transition);
         }
 
@@ -224,12 +240,12 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             transition: var(--transition);
-            box-shadow: 0 2px 10px rgba(10, 132, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(222, 55, 46, 0.3);
         }
 
         .nav-btn-signup:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(222, 55, 46, 0.4);
         }
 
         .nav-btn-signup::after {
@@ -238,7 +254,7 @@
 
         .nav-btn-login {
             font-weight: 600 !important;
-            color: var(--deep-blue) !important;
+            color: var(--white) !important;
         }
 
         /* Hamburger Icon */
@@ -262,7 +278,7 @@
             display: block;
             width: 24px;
             height: 2.5px;
-            background: var(--deep-blue);
+            background: var(--white);
             border-radius: 2px;
             transition: all 0.3s ease;
             transform-origin: center;
@@ -289,7 +305,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 998;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -306,14 +322,14 @@
             padding-top: 160px;
             padding-bottom: 60px;
             text-align: center;
-            background: radial-gradient(circle at 50% 0%, #f0f9ff, #fff);
+            background: radial-gradient(circle at 50% 0%, #2e0b0e, #000000);
             position: relative;
             overflow: hidden;
         }
 
         .page-header h1 {
             font-size: 3.5rem;
-            color: var(--deep-blue);
+            color: var(--white);
             margin-bottom: 10px;
         }
 
@@ -335,8 +351,8 @@
         .filter-btn {
             padding: 10px 25px;
             border-radius: 30px;
-            border: 1px solid #e2e8f0;
-            background: white;
+            border: 1px solid #333;
+            background: transparent;
             color: var(--text-dark);
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
@@ -349,7 +365,7 @@
             background: var(--gradient-main);
             color: white;
             border-color: transparent;
-            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(222, 55, 46, 0.3);
         }
 
         /* --- Project Grid --- */
@@ -365,9 +381,10 @@
             border-radius: 20px;
             overflow: hidden;
             aspect-ratio: 16/10;
-            background: #e2e8f0;
+            background: var(--bg-dark-card);
             cursor: pointer;
             transition: opacity 0.4s ease, transform 0.4s ease;
+            border: 1px solid var(--glass-border);
         }
 
         .project-card img {
@@ -380,7 +397,7 @@
         .project-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(30, 58, 138, 0.85);
+            background: rgba(190, 10, 30, 0.85); /* Dark Red */
             backdrop-filter: blur(4px);
             display: flex;
             flex-direction: column;
@@ -423,7 +440,7 @@
             text-transform: uppercase;
             font-size: 0.75rem;
             letter-spacing: 1px;
-            color: var(--primary-blue);
+            color: var(--bright-red);
             margin-bottom: 10px;
             display: block;
             font-weight: 700;
@@ -440,18 +457,19 @@
         .project-card:hover .play-btn {
             transform: scale(1.1);
             background: white;
-            color: var(--deep-blue);
+            color: var(--dark-red);
         }
 
         /* --- Featured Project --- */
         .featured-section {
-            background: var(--deep-blue);
+            background: linear-gradient(135deg, #bf0a1e 0%, #2e0b0e 100%); /* Dark Red to Blackish Red */
             color: white;
             border-radius: 30px;
             overflow: hidden;
             margin-bottom: 100px;
             position: relative;
-            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 20px 50px rgba(222, 55, 46, 0.2);
+            border: 1px solid var(--glass-border);
         }
 
         .featured-grid {
@@ -481,7 +499,7 @@
         }
 
         .featured-content p {
-            opacity: 0.8;
+            opacity: 0.9;
             margin-bottom: 30px;
             line-height: 1.7;
         }
@@ -504,7 +522,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, rgba(30, 58, 138, 1) 0%, rgba(30, 58, 138, 0) 100%);
+            background: linear-gradient(90deg, rgba(190, 10, 30, 1) 0%, rgba(190, 10, 30, 0) 100%);
             display: none;
         }
 
@@ -517,37 +535,37 @@
         }
 
         .cs-card {
-            background: white;
+            background: var(--bg-dark-card);
             padding: 40px 30px;
             border-radius: 20px;
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
             transition: var(--transition);
         }
 
         .cs-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(10, 132, 255, 0.15);
+            border-color: var(--dark-red);
         }
 
         .cs-icon {
             width: 80px;
             height: 80px;
-            background: #f0f9ff;
+            background: rgba(222, 55, 46, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
             font-size: 2rem;
-            color: var(--primary-blue);
+            color: var(--bright-red);
         }
 
         .cs-card h3 {
             margin-bottom: 15px;
-            color: var(--deep-blue);
+            color: var(--white);
         }
 
         .cs-card p {
@@ -559,15 +577,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #cbd5e1;
+            color: #4b5563;
             font-size: 1.5rem;
             margin-top: 40px;
         }
 
         /* --- CTA --- */
         .cta-section {
-            background: linear-gradient(135deg, #f0f9ff 0%, #fff 100%);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: var(--bg-dark-card);
+            border: 1px solid var(--glass-border);
             border-radius: 30px;
             padding: 80px 20px;
             text-align: center;
@@ -583,16 +601,17 @@
 
         .cta-content h2 {
             font-size: 2.5rem;
-            color: var(--deep-blue);
+            color: var(--white);
             margin-bottom: 15px;
         }
 
         /* --- Footer --- */
         footer {
-            background: var(--deep-blue);
+            background: var(--black);
             color: rgba(255, 255, 255, 0.7);
             padding: 80px 0 30px;
             margin-top: 80px;
+            border-top: 1px solid var(--glass-border);
         }
 
         .footer-grid {
@@ -616,7 +635,7 @@
         }
 
         .footer-info i {
-            color: var(--primary-blue);
+            color: var(--bright-red);
             flex-shrink: 0;
         }
 
@@ -639,7 +658,7 @@
         }
 
         .social-icons a:hover {
-            background: var(--primary-blue);
+            background: var(--bright-red);
             transform: translateY(-3px);
             color: white;
         }
@@ -698,7 +717,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -715,6 +734,7 @@
             justify-content: center;
             color: white;
             border-radius: 10px;
+            box-shadow: 0 0 50px rgba(222, 55, 46, 0.2);
         }
 
         .close-modal {
@@ -820,17 +840,18 @@
                 right: 0;
                 width: 280px;
                 height: 100vh;
-                background: var(--white);
+                background: var(--bg-dark-card);
                 flex-direction: column;
                 padding: 90px 30px 40px;
                 gap: 0;
                 text-align: left;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
                 transform: translateX(100%);
                 transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
                 z-index: 999;
                 overflow-y: auto;
                 align-items: stretch;
+                border-left: 1px solid var(--glass-border);
             }
 
             .nav-links.active {
@@ -845,7 +866,7 @@
                 display: block;
                 padding: 14px 0;
                 font-size: 1rem;
-                border-bottom: 1px solid #f1f5f9;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }
 
             .nav-links a::after {
@@ -853,7 +874,7 @@
             }
 
             .nav-links a:hover {
-                color: var(--primary-blue);
+                color: var(--bright-red);
                 padding-left: 8px;
             }
 
@@ -1156,8 +1177,8 @@
                     <p>A groundbreaking documentary series exploring the intersection of artificial intelligence and
                         human creativity. We handled full production, from drone cinematography to post-production VFX.
                     </p>
-                    <button class="btn" style="background: white; color: var(--deep-blue);"
-                        onclick="openModal('Chronicles of the Future', 'Featured')">View Full Case Study</button>
+                    <!-- Removed inline style to allow CSS gradient button -->
+                    <button class="btn" onclick="openModal('Chronicles of the Future', 'Featured')">View Full Case Study</button>
                 </div>
                 <div class="featured-image">
                     <img src="https://picsum.photos/seed/featured/800/600" alt="Featured Project">
@@ -1169,7 +1190,7 @@
         <!-- Case Study Section -->
         <section class="section-padding text-center">
             <div class="reveal">
-                <h2 style="font-size: 2.5rem; color: var(--deep-blue); margin-bottom: 10px;">Case Study: Zenith Auto
+                <h2 style="font-size: 2.5rem; color: var(--white); margin-bottom: 10px;">Case Study: Zenith Auto
                 </h2>
                 <p style="color: var(--text-light);">How we redefined a brand's digital presence.</p>
             </div>
@@ -1210,7 +1231,7 @@
         <!-- CTA Section -->
         <section class="cta-section reveal">
             <div class="bg-shape"
-                style="position:absolute; width:300px; height:300px; background:rgba(10,132,255,0.1); border-radius:50%; filter:blur(60px); top:-50px; right:-50px;">
+                style="position:absolute; width:300px; height:300px; background:rgba(222, 55, 46, 0.1); border-radius:50%; filter:blur(60px); top:-50px; right:-50px;">
             </div>
             <div class="cta-content">
                 <h2>Work With Us</h2>
@@ -1241,9 +1262,9 @@
 
                 <div class="footer-col footer-info">
                     <h3>Contact Us</h3>
-                    <p><i class="fa-solid fa-envelope"></i>Aimtechimxstudio@gmail.com</p>
+                    <p><i class="fa-solid fa-envelope"></i> Aimtechimxstudio@gmail.com</p>
                     <p><i class="fa-solid fa-phone"></i> +91 9831739774</p>
-                    <p><i class="fa-solid fa-location-dot"></i>Dakshin Gobindapur Rd, Dakshin Gobindopur, Rajpur Sonarpur, Jaynagar, West Bengal 700145</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Dakshin Gobindapur Rd, Dakshin Gobindopur, Rajpur Sonarpur, Jaynagar, West Bengal 700145</p>
                 </div>
 
                 <div class="footer-col">
