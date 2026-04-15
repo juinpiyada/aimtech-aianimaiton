@@ -17,18 +17,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CSS Variables & Reset --- */
+        /* --- Aimax Studio Global Color Theme (Applied from Request) --- */
         :root {
-            --primary-blue: #0A84FF;
-            --deep-blue: #1E3A8A;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
+            /* Backgrounds */
+            --black: #0a0a0a;
+            /* Brand Main Black */
+            --bg-dark-card: #141414;
+            /* Lighter black for cards/sections */
+
+            /* Brand Colors */
+            --bright-red: #de372e;
+            /* Brand Bright Red */
+            --dark-red: #bf0a1e;
+            /* Brand Dark Red */
+
+            /* Typography */
             --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            --gradient-main: linear-gradient(135deg, #0A84FF 0%, #1E3A8A 100%);
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* Headings */
+            --text-dark: #ffffff;
+            /* Main text for dark mode */
+            --text-light: #a0aec0;
+            /* Muted gray for body text */
+
+            /* Gradients & Animations */
+            --gradient-main: linear-gradient(135deg, #de372e 0%, #bf0a1e 100%);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* Extras for Glassmorphism/Effects */
+            --glass-bg: rgba(20, 20, 20, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -41,10 +59,11 @@
             scroll-behavior: smooth;
         }
 
+        /* Base Body Application */
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
-            background-color: #f8fafc;
+            background-color: var(--black);
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -56,6 +75,7 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             line-height: 1.2;
+            color: var(--white);
         }
 
         a {
@@ -106,12 +126,12 @@
             border: 2px solid transparent;
             background: var(--gradient-main);
             color: var(--white);
-            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(222, 55, 46, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(10, 132, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(222, 55, 46, 0.5);
         }
 
         /* --- Header --- */
@@ -121,15 +141,17 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(10, 10, 10, 0.85);
+            /* Using --black */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid var(--glass-border);
             transition: var(--transition);
         }
 
         header.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            background: rgba(10, 10, 10, 0.98);
         }
 
         .nav-container {
@@ -143,7 +165,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--deep-blue);
+            color: var(--white);
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
@@ -173,7 +195,8 @@
         .logo-caption .studio-name {
             font-size: 1.4rem;
             font-weight: 800;
-            color: var(--deep-blue);
+            color: var(--text-dark);
+            /* White */
             letter-spacing: -0.3px;
         }
 
@@ -206,7 +229,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background: var(--primary-blue);
+            background: var(--bright-red);
             transition: var(--transition);
         }
 
@@ -223,12 +246,12 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             transition: var(--transition);
-            box-shadow: 0 2px 10px rgba(10, 132, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(222, 55, 46, 0.3);
         }
 
         .nav-btn-signup:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(222, 55, 46, 0.5);
         }
 
         .nav-btn-signup::after {
@@ -237,7 +260,7 @@
 
         .nav-btn-login {
             font-weight: 600 !important;
-            color: var(--deep-blue) !important;
+            color: var(--white) !important;
         }
 
         /* Hamburger Icon */
@@ -261,7 +284,7 @@
             display: block;
             width: 24px;
             height: 2.5px;
-            background: var(--deep-blue);
+            background: var(--white);
             border-radius: 2px;
             transition: all 0.3s ease;
             transform-origin: center;
@@ -288,7 +311,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 998;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -307,19 +330,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #1E3A8A 0%, #0f172a 100%);
+            background: var(--black);
             color: var(--white);
             overflow: hidden;
             text-align: center;
         }
 
-        /* Floating Blob Animation */
+        /* Floating Blob Animation - Using Theme Colors */
         .blob {
             position: absolute;
-            background: rgba(10, 132, 255, 0.2);
+            background: var(--gradient-main);
             border-radius: 50%;
             filter: blur(60px);
             z-index: 1;
+            opacity: 0.4;
             animation: float 10s infinite ease-in-out;
         }
 
@@ -328,6 +352,7 @@
             height: 400px;
             top: -100px;
             right: -100px;
+            background: var(--bright-red);
         }
 
         .blob-2 {
@@ -336,11 +361,19 @@
             bottom: -50px;
             left: -50px;
             animation-delay: 2s;
+            background: var(--dark-red);
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -30px); }
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -30px);
+            }
         }
 
         .hero-content {
@@ -360,6 +393,7 @@
             font-size: 1.25rem;
             opacity: 0.9;
             margin-bottom: 40px;
+            color: var(--text-light);
         }
 
         /* --- Story Section --- */
@@ -372,7 +406,7 @@
 
         .story-text h2 {
             font-size: 2.5rem;
-            color: var(--deep-blue);
+            color: var(--white);
             margin-bottom: 20px;
         }
 
@@ -385,8 +419,9 @@
         .story-img {
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             position: relative;
+            border: 1px solid var(--glass-border);
         }
 
         .story-img img {
@@ -400,7 +435,7 @@
 
         /* --- Values Section --- */
         .values-section {
-            background: white;
+            background: var(--bg-dark-card);
         }
 
         .values-grid {
@@ -411,8 +446,7 @@
         }
 
         .value-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            background: var(--black);
             border: 1px solid var(--glass-border);
             padding: 40px 30px;
             border-radius: 20px;
@@ -422,32 +456,32 @@
 
         .value-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--glass-shadow);
-            border-color: var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(222, 55, 46, 0.15);
+            border-color: var(--bright-red);
         }
 
         .value-icon {
             width: 80px;
             height: 80px;
-            background: #e0f2fe;
+            background: rgba(222, 55, 46, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
             font-size: 2rem;
-            color: var(--primary-blue);
+            color: var(--bright-red);
             transition: var(--transition);
         }
 
         .value-card:hover .value-icon {
             background: var(--gradient-main);
-            color: white;
+            color: var(--white);
         }
 
         .value-card h3 {
             margin-bottom: 15px;
-            color: var(--deep-blue);
+            color: var(--white);
         }
 
         .value-card p {
@@ -464,18 +498,19 @@
         }
 
         .team-card {
-            background: white;
+            background: var(--bg-dark-card);
             border-radius: 20px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
-            border: 1px solid #f1f5f9;
+            border: 1px solid var(--glass-border);
         }
 
         .team-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(10, 132, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(222, 55, 46, 0.2);
+            border-color: var(--dark-red);
         }
 
         .team-img-wrapper {
@@ -484,7 +519,7 @@
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 20px;
-            border: 3px solid #e0f2fe;
+            border: 3px solid var(--dark-red);
         }
 
         .team-img-wrapper img {
@@ -494,13 +529,13 @@
         }
 
         .team-card h4 {
-            color: var(--deep-blue);
+            color: var(--white);
             margin-bottom: 5px;
             font-size: 1.2rem;
         }
 
         .team-card span {
-            color: var(--primary-blue);
+            color: var(--bright-red);
             font-size: 0.9rem;
             font-weight: 500;
         }
@@ -518,13 +553,13 @@
         }
 
         .team-socials a:hover {
-            color: var(--primary-blue);
+            color: var(--bright-red);
         }
 
         /* --- Achievements --- */
         .achievements-section {
-            background: var(--deep-blue);
-            color: white;
+            background: var(--bg-dark-card);
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
@@ -540,7 +575,7 @@
 
         .stat-item h2 {
             font-size: 3.5rem;
-            color: var(--primary-blue);
+            color: var(--bright-red);
             margin-bottom: 10px;
         }
 
@@ -548,22 +583,24 @@
             font-size: 1.1rem;
             opacity: 0.8;
             font-weight: 500;
+            color: var(--text-light);
         }
 
         /* --- CTA --- */
         .cta-container {
-            background: white;
+            background: var(--bg-dark-card);
             border-radius: 30px;
             padding: 80px 40px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
+            border: 1px solid var(--glass-border);
         }
 
         .cta-container h2 {
             font-size: 2.5rem;
-            color: var(--deep-blue);
+            color: var(--white);
             margin-bottom: 15px;
         }
 
@@ -577,10 +614,11 @@
 
         /* --- Footer --- */
         footer {
-            background: #0f172a;
-            color: rgba(255, 255, 255, 0.6);
+            background: var(--black);
+            color: var(--text-light);
             padding: 80px 0 30px;
             font-size: 0.9rem;
+            border-top: 1px solid var(--glass-border);
         }
 
         .footer-grid {
@@ -591,12 +629,12 @@
         }
 
         .footer-col h3 {
-            color: white;
+            color: var(--white);
             margin-bottom: 15px;
         }
 
         .footer-info p {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-light);
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -604,7 +642,7 @@
         }
 
         .footer-info i {
-            color: var(--primary-blue);
+            color: var(--bright-red);
             flex-shrink: 0;
         }
 
@@ -623,21 +661,22 @@
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-light);
         }
 
         .social-icons a:hover {
-            background: var(--primary-blue);
+            background: var(--bright-red);
             transform: translateY(-3px);
-            color: white;
+            color: var(--white);
         }
 
         .copyright {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-light);
             font-size: 0.9rem;
+            opacity: 0.6;
         }
 
         /* Footer Logo */
@@ -673,7 +712,7 @@
         .footer-logo-caption .studio-tagline {
             font-size: 0.6rem;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-light);
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
@@ -741,17 +780,18 @@
                 right: 0;
                 width: 280px;
                 height: 100vh;
-                background: var(--white);
+                background: var(--bg-dark-card);
                 flex-direction: column;
                 padding: 90px 30px 40px;
                 gap: 0;
                 text-align: left;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
                 transform: translateX(100%);
                 transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
                 z-index: 999;
                 overflow-y: auto;
                 align-items: stretch;
+                border-left: 1px solid var(--glass-border);
             }
 
             .nav-links.active {
@@ -766,7 +806,7 @@
                 display: block;
                 padding: 14px 0;
                 font-size: 1rem;
-                border-bottom: 1px solid #f1f5f9;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }
 
             .nav-links a::after {
@@ -774,7 +814,7 @@
             }
 
             .nav-links a:hover {
-                color: var(--primary-blue);
+                color: var(--bright-red);
                 padding-left: 8px;
             }
 
@@ -951,9 +991,9 @@
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="hero-content reveal">
-            <h1>We Are <span style="color: var(--primary-blue);">Storytellers</span></h1>
+            <h1>We Are <span style="color: var(--bright-red);">Storytellers</span></h1>
             <p>Combining artistry with technology to create visual experiences that resonate.</p>
-            <a href="#story" class="btn" style="background: white; color: var(--deep-blue);">Our Journey</a>
+            <a href="#story" class="btn" style="background: var(--white); color: var(--black);">Our Journey</a>
         </div>
     </section>
 
@@ -994,7 +1034,8 @@
                 <div class="value-card reveal">
                     <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
                     <h3>Innovation</h3>
-                    <p>We utilize the latest technology — from 3D rendering to AI-driven analytics — to deliver cutting-edge
+                    <p>We utilize the latest technology — from 3D rendering to AI-driven analytics — to deliver
+                        cutting-edge
                         results.</p>
                 </div>
                 <div class="value-card reveal">
@@ -1074,7 +1115,7 @@
     <!-- Achievements -->
     <section class="section-padding achievements-section">
         <div class="bg-shape"
-            style="position:absolute; width:500px; height:500px; background:rgba(255,255,255,0.05); border-radius:50%; filter:blur(100px); top:-100px; left:-100px;">
+            style="position:absolute; width:500px; height:500px; background:rgba(222, 55, 46, 0.1); border-radius:50%; filter:blur(100px); top:-100px; left:-100px;">
         </div>
         <div class="container">
             <div class="stats-grid reveal">
@@ -1103,7 +1144,7 @@
         <div class="container">
             <div class="cta-container reveal">
                 <div class="bg-shape"
-                    style="position:absolute; width:300px; height:300px; background:rgba(10,132,255,0.1); border-radius:50%; filter:blur(60px); top:-50px; right:-50px;">
+                    style="position:absolute; width:300px; height:300px; background:rgba(222, 55, 46, 0.1); border-radius:50%; filter:blur(60px); top:-50px; right:-50px;">
                 </div>
                 <h2>Ready to Create with Us?</h2>
                 <p>Whether you have a fully fleshed-out concept or just a spark of an idea, we'd love to hear from you.
@@ -1113,7 +1154,7 @@
         </div>
     </section>
 
-     <!-- Footer -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1134,16 +1175,17 @@
                     <h3>Contact Us</h3>
                     <p><i class="fa-solid fa-envelope"></i> Aimtechimxstudio@gmail.com</p>
                     <p><i class="fa-solid fa-phone"></i> +91 98317 39774</p>
-                    <p><i class="fa-solid fa-location-dot"></i> Dakshin Gobindapur Rd, Dakshin Gobindopur, Rajpur Sonarpur, Jaynagar, West Bengal 700145</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Dakshin Gobindapur Rd, Dakshin Gobindopur, Rajpur
+                        Sonarpur, Jaynagar, West Bengal 700145</p>
                 </div>
 
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="about.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">About Us</a>
-                        <a href="services.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Services</a>
-                        <a href="portfolio.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Portfolio</a>
-                        <a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Contact</a>
+                        <a href="about.html" style="color: var(--text-light); text-decoration: none;">About Us</a>
+                        <a href="services.html" style="color: var(--text-light); text-decoration: none;">Services</a>
+                        <a href="portfolio.html" style="color: var(--text-light); text-decoration: none;">Portfolio</a>
+                        <a href="contact.html" style="color: var(--text-light); text-decoration: none;">Contact</a>
                     </div>
                 </div>
 
@@ -1153,7 +1195,8 @@
                         <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://www.youtube.com/@aimtechanimation" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.youtube.com/@aimtechanimation" aria-label="YouTube"><i
+                                class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
