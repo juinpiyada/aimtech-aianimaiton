@@ -1,1276 +1,1381 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us | Aimax Studio</title>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
-        /* --- Aimax Studio Global Color Theme (Applied from Request) --- */
-        :root {
-            /* Backgrounds */
-            --black: #0a0a0a;
-            /* Brand Main Black */
-            --bg-dark-card: #141414;
-            /* Lighter black for cards/sections */
+      /* --- Aimax Studio Global Color Theme (Applied from Request) --- */
+      :root {
+        /* Backgrounds */
+        --black: #0a0a0a;
+        /* Brand Main Black */
+        --bg-dark-card: #141414;
+        /* Lighter black for cards/sections */
 
-            /* Brand Colors */
-            --bright-red: #de372e;
-            /* Brand Bright Red */
-            --dark-red: #bf0a1e;
-            /* Brand Dark Red */
+        /* Brand Colors */
+        --bright-red: #de372e;
+        /* Brand Bright Red */
+        --dark-red: #bf0a1e;
+        /* Brand Dark Red */
 
-            /* Typography */
-            --white: #ffffff;
-            /* Headings */
-            --text-dark: #ffffff;
-            /* Main text for dark mode */
-            --text-light: #a0aec0;
-            /* Muted gray for body text */
+        /* Typography */
+        --white: #ffffff;
+        /* Headings */
+        --text-dark: #ffffff;
+        /* Main text for dark mode */
+        --text-light: #a0aec0;
+        /* Muted gray for body text */
 
-            /* Gradients & Animations */
-            --gradient-main: linear-gradient(135deg, #de372e 0%, #bf0a1e 100%);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        /* Gradients & Animations */
+        --gradient-main: linear-gradient(135deg, #de372e 0%, #bf0a1e 100%);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-            /* Extras for Glassmorphism/Effects */
-            --glass-bg: rgba(20, 20, 20, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        /* Extras for Glassmorphism/Effects */
+        --glass-bg: rgba(20, 20, 20, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Base Body Application */
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text-dark);
+        background-color: var(--black);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--white);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* --- Utilities --- */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section-padding {
+        padding: 100px 0;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .gradient-text {
+        background: var(--gradient-main);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 32px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+        background: var(--gradient-main);
+        color: var(--white);
+        box-shadow: 0 4px 15px rgba(222, 55, 46, 0.3);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(222, 55, 46, 0.5);
+      }
+
+      /* --- Header --- */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(10, 10, 10, 0.85);
+        /* Using --black */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--glass-border);
+        transition: var(--transition);
+      }
+
+      header.scrolled {
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        background: rgba(10, 10, 10, 0.98);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+      }
+
+      .logo {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+
+      .logo img {
+        height: 62px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 10px;
+        transition: var(--transition);
+      }
+
+      .logo:hover img {
+        transform: scale(1.08);
+      }
+
+      .logo-caption {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+      }
+
+      .logo-caption .studio-name {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        /* White */
+        letter-spacing: -0.3px;
+      }
+
+      .logo-caption .studio-tagline {
+        font-size: 0.65rem;
+        font-weight: 500;
+        color: var(--text-light);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        color: var(--text-dark);
+        position: relative;
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: var(--bright-red);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-btn-signup {
+        padding: 8px 22px !important;
+        color: white !important;
+        background: var(--gradient-main);
+        border-radius: 50px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        box-shadow: 0 2px 10px rgba(222, 55, 46, 0.3);
+      }
+
+      .nav-btn-signup:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(222, 55, 46, 0.5);
+      }
+
+      .nav-btn-signup::after {
+        display: none !important;
+      }
+
+      .nav-btn-login {
+        font-weight: 600 !important;
+        color: var(--white) !important;
+      }
+
+      /* Hamburger Icon */
+      .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        gap: 6px;
+        padding: 0;
+        z-index: 1001;
+        flex-shrink: 0;
+      }
+
+      .mobile-toggle span {
+        display: block;
+        width: 24px;
+        height: 2.5px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      .mobile-toggle.active span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+      }
+
+      .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      .mobile-toggle.active span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+      }
+
+      /* Mobile Nav Overlay */
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .nav-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        position: relative;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--black);
+        color: var(--white);
+        overflow: hidden;
+        text-align: center;
+      }
+
+      /* Floating Blob Animation - Using Theme Colors */
+      .blob {
+        position: absolute;
+        background: var(--gradient-main);
+        border-radius: 50%;
+        filter: blur(60px);
+        z-index: 1;
+        opacity: 0.4;
+        animation: float 10s infinite ease-in-out;
+      }
+
+      .blob-1 {
+        width: 400px;
+        height: 400px;
+        top: -100px;
+        right: -100px;
+        background: var(--bright-red);
+      }
+
+      .blob-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -50px;
+        left: -50px;
+        animation-delay: 2s;
+        background: var(--dark-red);
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        50% {
+          transform: translate(30px, -30px);
         }
+      }
 
-        html {
-            scroll-behavior: smooth;
-        }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding: 0 20px;
+      }
 
-        /* Base Body Application */
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--black);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        letter-spacing: -1px;
+      }
 
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--white);
-        }
+      .hero p {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        margin-bottom: 40px;
+        color: var(--text-light);
+      }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+      /* --- Story Section --- */
+      .story-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
 
-        ul {
-            list-style: none;
-        }
+      .story-text h2 {
+        font-size: 2.5rem;
+        color: var(--white);
+        margin-bottom: 20px;
+      }
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
+      .story-text p {
+        color: var(--text-light);
+        margin-bottom: 20px;
+        font-size: 1.05rem;
+      }
 
-        /* --- Utilities --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+      .story-img {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        position: relative;
+        border: 1px solid var(--glass-border);
+      }
 
-        .section-padding {
-            padding: 100px 0;
-        }
+      .story-img img {
+        width: 100%;
+        transition: transform 0.6s ease;
+      }
 
-        .text-center {
-            text-align: center;
-        }
+      .story-img:hover img {
+        transform: scale(1.03);
+      }
 
-        .gradient-text {
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+      /* --- Values Section --- */
+      .values-section {
+        background: var(--bg-dark-card);
+      }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-family: 'Poppins', sans-serif;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            background: var(--gradient-main);
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(222, 55, 46, 0.3);
-        }
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+      }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(222, 55, 46, 0.5);
-        }
+      .value-card {
+        background: var(--black);
+        border: 1px solid var(--glass-border);
+        padding: 40px 30px;
+        border-radius: 20px;
+        text-align: center;
+        transition: var(--transition);
+      }
 
-        /* --- Header --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.85);
-            /* Using --black */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-            transition: var(--transition);
-        }
+      .value-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(222, 55, 46, 0.15);
+        border-color: var(--bright-red);
+      }
 
-        header.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            background: rgba(10, 10, 10, 0.98);
-        }
+      .value-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(222, 55, 46, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        font-size: 2rem;
+        color: var(--bright-red);
+        transition: var(--transition);
+      }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
+      .value-card:hover .value-icon {
+        background: var(--gradient-main);
+        color: var(--white);
+      }
 
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
+      .value-card h3 {
+        margin-bottom: 15px;
+        color: var(--white);
+      }
 
-        .logo img {
-            height: 62px;
-            width: auto;
-            object-fit: contain;
-            border-radius: 10px;
-            transition: var(--transition);
-        }
+      .value-card p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+      }
 
-        .logo:hover img {
-            transform: scale(1.08);
-        }
+      /* --- Team Section --- */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
 
-        .logo-caption {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.15;
-        }
+      .team-card {
+        background: var(--bg-dark-card);
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+        border: 1px solid var(--glass-border);
+      }
 
-        .logo-caption .studio-name {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            /* White */
-            letter-spacing: -0.3px;
-        }
+      .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(222, 55, 46, 0.2);
+        border-color: var(--dark-red);
+      }
 
-        .logo-caption .studio-tagline {
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: var(--text-light);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
+      .team-img-wrapper {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 20px;
+        border: 3px solid var(--dark-red);
+      }
 
+      .team-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .team-card h4 {
+        color: var(--white);
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+      }
+
+      .team-card span {
+        color: var(--bright-red);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .team-socials {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .team-socials a {
+        color: var(--text-light);
+        transition: 0.3s;
+      }
+
+      .team-socials a:hover {
+        color: var(--bright-red);
+      }
+
+      /* --- Achievements --- */
+      .achievements-section {
+        background: var(--bg-dark-card);
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .stat-item h2 {
+        font-size: 3.5rem;
+        color: var(--bright-red);
+        margin-bottom: 10px;
+      }
+
+      .stat-item p {
+        font-size: 1.1rem;
+        opacity: 0.8;
+        font-weight: 500;
+        color: var(--text-light);
+      }
+
+      /* --- CTA --- */
+      .cta-container {
+        background: var(--bg-dark-card);
+        border-radius: 30px;
+        padding: 80px 40px;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--glass-border);
+      }
+
+      .cta-container h2 {
+        font-size: 2.5rem;
+        color: var(--white);
+        margin-bottom: 15px;
+      }
+
+      .cta-container p {
+        color: var(--text-light);
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* --- Footer --- */
+      footer {
+        background: var(--black);
+        color: var(--text-light);
+        padding: 80px 0 30px;
+        font-size: 0.9rem;
+        border-top: 1px solid var(--glass-border);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h3 {
+        color: var(--white);
+        margin-bottom: 15px;
+      }
+
+      .footer-info p {
+        color: var(--text-light);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-info i {
+        color: var(--bright-red);
+        flex-shrink: 0;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .social-icons a {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        color: var(--text-light);
+      }
+
+      .social-icons a:hover {
+        background: var(--bright-red);
+        transform: translateY(-3px);
+        color: var(--white);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-light);
+        font-size: 0.9rem;
+        opacity: 0.6;
+      }
+
+      /* Footer Logo */
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+        text-decoration: none;
+      }
+
+      .footer-logo img {
+        height: 56px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .footer-logo-caption {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+      }
+
+      .footer-logo-caption .studio-name {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: -0.3px;
+      }
+
+      .footer-logo-caption .studio-tagline {
+        font-size: 0.6rem;
+        font-weight: 500;
+        color: var(--text-light);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      /* --- Animation Utilities --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease-out;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- Responsive --- */
+
+      /* Tablet */
+      @media (max-width: 1024px) {
         .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
+          gap: 18px;
         }
 
         .nav-links a {
-            font-weight: 500;
-            color: var(--text-dark);
-            position: relative;
-            font-size: 0.95rem;
-            white-space: nowrap;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: var(--bright-red);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-btn-signup {
-            padding: 8px 22px !important;
-            color: white !important;
-            background: var(--gradient-main);
-            border-radius: 50px;
-            font-weight: 600;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            box-shadow: 0 2px 10px rgba(222, 55, 46, 0.3);
-        }
-
-        .nav-btn-signup:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(222, 55, 46, 0.5);
-        }
-
-        .nav-btn-signup::after {
-            display: none !important;
-        }
-
-        .nav-btn-login {
-            font-weight: 600 !important;
-            color: var(--white) !important;
-        }
-
-        /* Hamburger Icon */
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 44px;
-            height: 44px;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            gap: 6px;
-            padding: 0;
-            z-index: 1001;
-            flex-shrink: 0;
-        }
-
-        .mobile-toggle span {
-            display: block;
-            width: 24px;
-            height: 2.5px;
-            background: var(--white);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-
-        .mobile-toggle.active span:nth-child(1) {
-            transform: translateY(8.5px) rotate(45deg);
-        }
-
-        .mobile-toggle.active span:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        .mobile-toggle.active span:nth-child(3) {
-            transform: translateY(-8.5px) rotate(-45deg);
-        }
-
-        /* Mobile Nav Overlay */
-        .nav-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 998;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .nav-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            position: relative;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--black);
-            color: var(--white);
-            overflow: hidden;
-            text-align: center;
-        }
-
-        /* Floating Blob Animation - Using Theme Colors */
-        .blob {
-            position: absolute;
-            background: var(--gradient-main);
-            border-radius: 50%;
-            filter: blur(60px);
-            z-index: 1;
-            opacity: 0.4;
-            animation: float 10s infinite ease-in-out;
-        }
-
-        .blob-1 {
-            width: 400px;
-            height: 400px;
-            top: -100px;
-            right: -100px;
-            background: var(--bright-red);
-        }
-
-        .blob-2 {
-            width: 300px;
-            height: 300px;
-            bottom: -50px;
-            left: -50px;
-            animation-delay: 2s;
-            background: var(--dark-red);
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-
-            50% {
-                transform: translate(30px, -30px);
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
+          font-size: 0.9rem;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
+          font-size: 3rem;
         }
+      }
 
-        .hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 40px;
-            color: var(--text-light);
-        }
-
-        /* --- Story Section --- */
+      /* Mobile Landscape & Small Tablets */
+      @media (max-width: 900px) {
         .story-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .story-text h2 {
-            font-size: 2.5rem;
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .story-text p {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        .story-img {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
-            border: 1px solid var(--glass-border);
-        }
-
-        .story-img img {
-            width: 100%;
-            transition: transform 0.6s ease;
-        }
-
-        .story-img:hover img {
-            transform: scale(1.03);
-        }
-
-        /* --- Values Section --- */
-        .values-section {
-            background: var(--bg-dark-card);
+          grid-template-columns: 1fr;
         }
 
         .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .value-card {
-            background: var(--black);
-            border: 1px solid var(--glass-border);
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(222, 55, 46, 0.15);
-            border-color: var(--bright-red);
-        }
-
-        .value-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(222, 55, 46, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
-            color: var(--bright-red);
-            transition: var(--transition);
-        }
-
-        .value-card:hover .value-icon {
-            background: var(--gradient-main);
-            color: var(--white);
-        }
-
-        .value-card h3 {
-            margin-bottom: 15px;
-            color: var(--white);
-        }
-
-        .value-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* --- Team Section --- */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .team-card {
-            background: var(--bg-dark-card);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-            border: 1px solid var(--glass-border);
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(222, 55, 46, 0.2);
-            border-color: var(--dark-red);
-        }
-
-        .team-img-wrapper {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 20px;
-            border: 3px solid var(--dark-red);
-        }
-
-        .team-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .team-card h4 {
-            color: var(--white);
-            margin-bottom: 5px;
-            font-size: 1.2rem;
-        }
-
-        .team-card span {
-            color: var(--bright-red);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .team-socials {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .team-socials a {
-            color: var(--text-light);
-            transition: 0.3s;
-        }
-
-        .team-socials a:hover {
-            color: var(--bright-red);
-        }
-
-        /* --- Achievements --- */
-        .achievements-section {
-            background: var(--bg-dark-card);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
+          grid-template-columns: 1fr;
         }
 
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .section-padding {
+          padding: 70px 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          height: 70px;
+        }
+
+        .mobile-toggle {
+          display: flex;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 280px;
+          height: 100vh;
+          background: var(--bg-dark-card);
+          flex-direction: column;
+          padding: 90px 30px 40px;
+          gap: 0;
+          text-align: left;
+          box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+          transform: translateX(100%);
+          transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+          z-index: 999;
+          overflow-y: auto;
+          align-items: stretch;
+          border-left: 1px solid var(--glass-border);
+        }
+
+        .nav-links.active {
+          transform: translateX(0);
+        }
+
+        .nav-links li {
+          width: 100%;
+        }
+
+        .nav-links a {
+          display: block;
+          padding: 14px 0;
+          font-size: 1rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a::after {
+          display: none;
+        }
+
+        .nav-links a:hover {
+          color: var(--bright-red);
+          padding-left: 8px;
+        }
+
+        .nav-btn-login {
+          border-bottom: none !important;
+          margin-top: 10px;
+        }
+
+        .nav-btn-signup {
+          display: block !important;
+          text-align: center;
+          margin-top: 10px;
+          padding: 12px 22px !important;
+          border-bottom: none !important;
+        }
+
+        .nav-overlay {
+          display: block;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .hero {
+          height: 70vh;
+          min-height: 500px;
+        }
+
+        .story-text h2 {
+          font-size: 2rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
         }
 
         .stat-item h2 {
-            font-size: 3.5rem;
-            color: var(--bright-red);
-            margin-bottom: 10px;
+          font-size: 2.8rem;
         }
 
-        .stat-item p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            font-weight: 500;
-            color: var(--text-light);
-        }
-
-        /* --- CTA --- */
         .cta-container {
-            background: var(--bg-dark-card);
-            border-radius: 30px;
-            padding: 80px 40px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
+          padding: 50px 25px;
+          border-radius: 20px;
         }
 
         .cta-container h2 {
-            font-size: 2.5rem;
-            color: var(--white);
-            margin-bottom: 15px;
+          font-size: 1.8rem;
+        }
+      }
+
+      /* Mobile Portrait */
+      @media (max-width: 480px) {
+        .logo img {
+          height: 42px;
         }
 
-        .cta-container p {
-            color: var(--text-light);
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .logo-caption .studio-name {
+          font-size: 1rem;
         }
 
-        /* --- Footer --- */
-        footer {
-            background: var(--black);
-            color: var(--text-light);
-            padding: 80px 0 30px;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--glass-border);
+        .logo-caption .studio-tagline {
+          font-size: 0.55rem;
+          letter-spacing: 1px;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+        .logo {
+          gap: 10px;
         }
 
-        .footer-col h3 {
-            color: var(--white);
-            margin-bottom: 15px;
+        .nav-container {
+          height: 64px;
         }
 
-        .footer-info p {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .nav-links {
+          width: 260px;
+          padding: 80px 24px 30px;
         }
 
-        .footer-info i {
-            color: var(--bright-red);
-            flex-shrink: 0;
+        .hero h1 {
+          font-size: 2rem;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
+        .hero p {
+          font-size: 0.9rem;
+          margin-bottom: 30px;
         }
 
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            color: var(--text-light);
+        .section-padding {
+          padding: 60px 0;
         }
 
-        .social-icons a:hover {
-            background: var(--bright-red);
-            transform: translateY(-3px);
-            color: var(--white);
+        .story-text h2 {
+          font-size: 1.7rem;
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-
-        /* Footer Logo */
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 20px;
-            text-decoration: none;
+        .team-grid {
+          grid-template-columns: 1fr;
         }
 
         .footer-logo img {
-            height: 56px;
-            width: auto;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        .footer-logo-caption {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.15;
+          height: 40px;
         }
 
         .footer-logo-caption .studio-name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -0.3px;
+          font-size: 1.1rem;
         }
 
-        .footer-logo-caption .studio-tagline {
-            font-size: 0.6rem;
-            font-weight: 500;
-            color: var(--text-light);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+        footer {
+          padding: 60px 0 20px;
+        }
+      }
+
+      /* Extra small */
+      @media (max-width: 360px) {
+        .logo-caption .studio-tagline {
+          display: none;
         }
 
-        /* --- Animation Utilities --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-out;
+        .logo img {
+          height: 38px;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .hero h1 {
+          font-size: 1.7rem;
         }
-
-        /* --- Responsive --- */
-
-        /* Tablet */
-        @media (max-width: 1024px) {
-            .nav-links {
-                gap: 18px;
-            }
-
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-        }
-
-        /* Mobile Landscape & Small Tablets */
-        @media (max-width: 900px) {
-            .story-section {
-                grid-template-columns: 1fr;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .section-padding {
-                padding: 70px 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                height: 70px;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 280px;
-                height: 100vh;
-                background: var(--bg-dark-card);
-                flex-direction: column;
-                padding: 90px 30px 40px;
-                gap: 0;
-                text-align: left;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-                transform: translateX(100%);
-                transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-                z-index: 999;
-                overflow-y: auto;
-                align-items: stretch;
-                border-left: 1px solid var(--glass-border);
-            }
-
-            .nav-links.active {
-                transform: translateX(0);
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 14px 0;
-                font-size: 1rem;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .nav-links a:hover {
-                color: var(--bright-red);
-                padding-left: 8px;
-            }
-
-            .nav-btn-login {
-                border-bottom: none !important;
-                margin-top: 10px;
-            }
-
-            .nav-btn-signup {
-                display: block !important;
-                text-align: center;
-                margin-top: 10px;
-                padding: 12px 22px !important;
-                border-bottom: none !important;
-            }
-
-            .nav-overlay {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero {
-                height: 70vh;
-                min-height: 500px;
-            }
-
-            .story-text h2 {
-                font-size: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .stat-item h2 {
-                font-size: 2.8rem;
-            }
-
-            .cta-container {
-                padding: 50px 25px;
-                border-radius: 20px;
-            }
-
-            .cta-container h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* Mobile Portrait */
-        @media (max-width: 480px) {
-            .logo img {
-                height: 42px;
-            }
-
-            .logo-caption .studio-name {
-                font-size: 1rem;
-            }
-
-            .logo-caption .studio-tagline {
-                font-size: 0.55rem;
-                letter-spacing: 1px;
-            }
-
-            .logo {
-                gap: 10px;
-            }
-
-            .nav-container {
-                height: 64px;
-            }
-
-            .nav-links {
-                width: 260px;
-                padding: 80px 24px 30px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-                margin-bottom: 30px;
-            }
-
-            .section-padding {
-                padding: 60px 0;
-            }
-
-            .story-text h2 {
-                font-size: 1.7rem;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-logo img {
-                height: 40px;
-            }
-
-            .footer-logo-caption .studio-name {
-                font-size: 1.1rem;
-            }
-
-            footer {
-                padding: 60px 0 20px;
-            }
-        }
-
-        /* Extra small */
-        @media (max-width: 360px) {
-            .logo-caption .studio-tagline {
-                display: none;
-            }
-
-            .logo img {
-                height: 38px;
-            }
-
-            .hero h1 {
-                font-size: 1.7rem;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- Nav Overlay for Mobile -->
     <div class="nav-overlay" id="nav-overlay"></div>
 
     <!-- Header -->
     <header id="header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="Aimax Studio Logo">
-                <span class="logo-caption">
-                    <span class="studio-name">Aimax Studio</span>
-                    <span class="studio-tagline">Creative Film & Digital</span>
-                </span>
-            </a>
+      <div class="container nav-container">
+        <a href="index.html" class="logo">
+          <img src="assets/logo.png" alt="Aimax Studio Logo" />
+          <span class="logo-caption">
+            <span class="studio-name">Aimax Studio</span>
+            <span class="studio-tagline">Creative Film & Digital</span>
+          </span>
+        </a>
 
-            <button class="mobile-toggle" id="mobile-menu" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+        <button
+          class="mobile-toggle"
+          id="mobile-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-            <nav>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.html" class="nav-btn-login">Login</a></li>
-                    <li><a href="signup.html" class="nav-btn-signup">Sign Up</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" class="nav-btn-login">Login</a></li>
+            <li><a href="signup.html" class="nav-btn-signup">Sign Up</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="hero-content reveal">
-            <h1>We Are <span style="color: var(--bright-red);">Storytellers</span></h1>
-            <p>Combining artistry with technology to create visual experiences that resonate.</p>
-            <a href="#story" class="btn" style="background: var(--white); color: var(--black);">Our Journey</a>
-        </div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="hero-content reveal">
+        <h1>
+          We Are <span style="color: var(--bright-red)">Storytellers</span>
+        </h1>
+        <p>
+          Combining artistry with technology to create visual experiences that
+          resonate.
+        </p>
+        <a
+          href="#story"
+          class="btn"
+          style="background: var(--white); color: var(--black)"
+          >Our Journey</a
+        >
+      </div>
     </section>
 
     <!-- Company Story -->
     <section id="story" class="section-padding">
-        <div class="container story-section">
-            <div class="story-text reveal">
-                <h2>The Animax <span class="gradient-text">Journey</span></h2>
-                <p>Founded in 2013, Aimax Studio started as a small collective of passionate artists in a garage
-                    studio. Our mission was simple: to bridge the gap between traditional storytelling and modern
-                    digital innovation.</p>
-                <p>Over the last decade, we have evolved into a full-service creative agency, producing award-winning
-                    films, compelling animations, and data-driven marketing campaigns for global brands.</p>
-                <p>We believe that every frame matters. Whether it's a 2D character or a cinematic commercial, we pour
-                    our hearts into creating something truly extraordinary.</p>
-            </div>
-            <div class="story-img reveal">
-                <img src="https://picsum.photos/seed/office/600/500" alt="Aimax Studio">
-            </div>
+      <div class="container story-section">
+        <div class="story-text reveal">
+          <h2>The Animax <span class="gradient-text">Journey</span></h2>
+          <p>
+            Founded in 2013, Aimax Studio started as a small collective of
+            passionate artists in a garage studio. Our mission was simple: to
+            bridge the gap between traditional storytelling and modern digital
+            innovation.
+          </p>
+          <p>
+            Over the last decade, we have evolved into a full-service creative
+            agency, producing award-winning films, compelling animations, and
+            data-driven marketing campaigns for global brands.
+          </p>
+          <p>
+            We believe that every frame matters. Whether it's a 2D character or
+            a cinematic commercial, we pour our hearts into creating something
+            truly extraordinary.
+          </p>
         </div>
+        <div class="story-img reveal">
+          <img
+            src="https://picsum.photos/seed/office/600/500"
+            alt="Aimax Studio"
+          />
+        </div>
+      </div>
     </section>
 
     <!-- Values Section -->
     <section class="section-padding values-section">
-        <div class="container">
-            <div class="text-center reveal">
-                <h2>Our Core Values</h2>
-                <p style="color: var(--text-light);">The principles that drive every project we take on.</p>
-            </div>
-
-            <div class="values-grid">
-                <div class="value-card reveal">
-                    <div class="value-icon"><i class="fa-solid fa-palette"></i></div>
-                    <h3>Creativity</h3>
-                    <p>We push boundaries. We don't just follow trends; we set them by thinking outside the box and
-                        daring to be different.</p>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                    <h3>Innovation</h3>
-                    <p>We utilize the latest technology — from 3D rendering to AI-driven analytics — to deliver
-                        cutting-edge
-                        results.</p>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon"><i class="fa-solid fa-book-open"></i></div>
-                    <h3>Storytelling</h3>
-                    <p>At the heart of every visual is a story. We ensure your narrative is clear, emotional, and
-                        memorable.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="text-center reveal">
+          <h2>Our Core Values</h2>
+          <p style="color: var(--text-light)">
+            The principles that drive every project we take on.
+          </p>
         </div>
+
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <div class="value-icon"><i class="fa-solid fa-palette"></i></div>
+            <h3>Creativity</h3>
+            <p>
+              We push boundaries. We don't just follow trends; we set them by
+              thinking outside the box and daring to be different.
+            </p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <h3>Innovation</h3>
+            <p>
+              We utilize the latest technology — from 3D rendering to AI-driven
+              analytics — to deliver cutting-edge results.
+            </p>
+          </div>
+          <div class="value-card reveal">
+            <div class="value-icon"><i class="fa-solid fa-book-open"></i></div>
+            <h3>Storytelling</h3>
+            <p>
+              At the heart of every visual is a story. We ensure your narrative
+              is clear, emotional, and memorable.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Team Section -->
     <section class="section-padding">
-        <div class="container">
-            <div class="text-center reveal">
-                <h2>Meet The <span class="gradient-text">Team</span></h2>
-                <p style="color: var(--text-light);">The creative minds behind the magic.</p>
-            </div>
-
-            <div class="team-grid">
-                <!-- Member 1 -->
-                <div class="team-card reveal">
-                    <div class="team-img-wrapper">
-                        <img src="https://picsum.photos/seed/person1/200/200" alt="CEO">
-                    </div>
-                    <h4>Alex Morgan</h4>
-                    <span>Founder & CEO</span>
-                    <div class="team-socials">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    </div>
-                </div>
-
-                <!-- Member 2 -->
-                <div class="team-card reveal">
-                    <div class="team-img-wrapper">
-                        <img src="https://picsum.photos/seed/person2/200/200" alt="Creative Director">
-                    </div>
-                    <h4>Sarah Chen</h4>
-                    <span>Creative Director</span>
-                    <div class="team-socials">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <!-- Member 3 -->
-                <div class="team-card reveal">
-                    <div class="team-img-wrapper">
-                        <img src="https://picsum.photos/seed/person3/200/200" alt="Head of Animation">
-                    </div>
-                    <h4>Marcus Johnson</h4>
-                    <span>Head of Animation</span>
-                    <div class="team-socials">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-brands fa-artstation"></i></a>
-                    </div>
-                </div>
-
-                <!-- Member 4 -->
-                <div class="team-card reveal">
-                    <div class="team-img-wrapper">
-                        <img src="https://picsum.photos/seed/person4/200/200" alt="Lead Editor">
-                    </div>
-                    <h4>Emily Davis</h4>
-                    <span>Lead Editor</span>
-                    <div class="team-socials">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-brands fa-vimeo-v"></i></a>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="text-center reveal">
+          <h2>Meet The <span class="gradient-text">Team</span></h2>
+          <p style="color: var(--text-light)">
+            The creative minds behind the magic.
+          </p>
         </div>
+
+        <div class="team-grid">
+          <!-- Member 1 -->
+          <div class="team-card reveal">
+            <div class="team-img-wrapper">
+              <img src="https://picsum.photos/seed/person1/200/200" alt="CEO" />
+            </div>
+            <h4>Alex Morgan</h4>
+            <span>Founder & CEO</span>
+            <div class="team-socials">
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+
+          <!-- Member 2 -->
+          <div class="team-card reveal">
+            <div class="team-img-wrapper">
+              <img
+                src="https://picsum.photos/seed/person2/200/200"
+                alt="Creative Director"
+              />
+            </div>
+            <h4>Sarah Chen</h4>
+            <span>Creative Director</span>
+            <div class="team-socials">
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <!-- Member 3 -->
+          <div class="team-card reveal">
+            <div class="team-img-wrapper">
+              <img
+                src="https://picsum.photos/seed/person3/200/200"
+                alt="Head of Animation"
+              />
+            </div>
+            <h4>Marcus Johnson</h4>
+            <span>Head of Animation</span>
+            <div class="team-socials">
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#"><i class="fa-brands fa-artstation"></i></a>
+            </div>
+          </div>
+
+          <!-- Member 4 -->
+          <div class="team-card reveal">
+            <div class="team-img-wrapper">
+              <img
+                src="https://picsum.photos/seed/person4/200/200"
+                alt="Lead Editor"
+              />
+            </div>
+            <h4>Emily Davis</h4>
+            <span>Lead Editor</span>
+            <div class="team-socials">
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#"><i class="fa-brands fa-vimeo-v"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Achievements -->
     <section class="section-padding achievements-section">
-        <div class="bg-shape"
-            style="position:absolute; width:500px; height:500px; background:rgba(222, 55, 46, 0.1); border-radius:50%; filter:blur(100px); top:-100px; left:-100px;">
+      <div
+        class="bg-shape"
+        style="
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          background: rgba(222, 55, 46, 0.1);
+          border-radius: 50%;
+          filter: blur(100px);
+          top: -100px;
+          left: -100px;
+        "
+      ></div>
+      <div class="container">
+        <div class="stats-grid reveal">
+          <div class="stat-item">
+            <h2>10+</h2>
+            <p>Years Experience</p>
+          </div>
+          <div class="stat-item">
+            <h2>500+</h2>
+            <p>Projects Delivered</p>
+          </div>
+          <div class="stat-item">
+            <h2>50+</h2>
+            <p>Industry Awards</p>
+          </div>
+          <div class="stat-item">
+            <h2>100%</h2>
+            <p>Client Satisfaction</p>
+          </div>
         </div>
-        <div class="container">
-            <div class="stats-grid reveal">
-                <div class="stat-item">
-                    <h2>10+</h2>
-                    <p>Years Experience</p>
-                </div>
-                <div class="stat-item">
-                    <h2>500+</h2>
-                    <p>Projects Delivered</p>
-                </div>
-                <div class="stat-item">
-                    <h2>50+</h2>
-                    <p>Industry Awards</p>
-                </div>
-                <div class="stat-item">
-                    <h2>100%</h2>
-                    <p>Client Satisfaction</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <!-- CTA -->
     <section class="section-padding">
-        <div class="container">
-            <div class="cta-container reveal">
-                <div class="bg-shape"
-                    style="position:absolute; width:300px; height:300px; background:rgba(222, 55, 46, 0.1); border-radius:50%; filter:blur(60px); top:-50px; right:-50px;">
-                </div>
-                <h2>Ready to Create with Us?</h2>
-                <p>Whether you have a fully fleshed-out concept or just a spark of an idea, we'd love to hear from you.
-                </p>
-                <button class="btn" onclick="window.location.href='index.html#contact'">Get in Touch</button>
-            </div>
+      <div class="container">
+        <div class="cta-container reveal">
+          <div
+            class="bg-shape"
+            style="
+              position: absolute;
+              width: 300px;
+              height: 300px;
+              background: rgba(222, 55, 46, 0.1);
+              border-radius: 50%;
+              filter: blur(60px);
+              top: -50px;
+              right: -50px;
+            "
+          ></div>
+          <h2>Ready to Create with Us?</h2>
+          <p>
+            Whether you have a fully fleshed-out concept or just a spark of an
+            idea, we'd love to hear from you.
+          </p>
+          <button
+            class="btn"
+            onclick="window.location.href = 'index.html#contact'"
+          >
+            Get in Touch
+          </button>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Footer Logo Column -->
-                <div class="footer-col">
-                    <a href="index.html" class="footer-logo">
-                        <img src="assets/logo.png" alt="Aimax Studio Logo">
-                        <span class="footer-logo-caption">
-                            <span class="studio-name">Aimax Studio</span>
-                            <span class="studio-tagline">Creative Film & Digital</span>
-                        </span>
-                    </a>
-                    <p style="opacity: 0.7; margin-top: 15px;">Elevating brands through the power of animation, film,
-                        and digital innovation.</p>
-                </div>
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Footer Logo Column -->
+          <div class="footer-col">
+            <a href="index.html" class="footer-logo">
+              <img src="assets/logo.png" alt="Aimax Studio Logo" />
+              <span class="footer-logo-caption">
+                <span class="studio-name">Aimax Studio</span>
+                <span class="studio-tagline">Creative Film & Digital</span>
+              </span>
+            </a>
+            <p style="opacity: 0.7; margin-top: 15px">
+              Elevating brands through the power of animation, film, and digital
+              innovation.
+            </p>
+          </div>
 
-                <div class="footer-col footer-info">
-                    <h3>Contact Us</h3>
-                    <p><i class="fa-solid fa-envelope"></i> Aimtechimxstudio@gmail.com</p>
-                    <p><i class="fa-solid fa-phone"></i> +91 98317 39774</p>
-                    <p><i class="fa-solid fa-location-dot"></i> Dakshin Gobindapur Rd, Dakshin Gobindopur, Rajpur
-                        Sonarpur, Jaynagar, West Bengal 700145</p>
-                </div>
+          <div class="footer-col footer-info">
+            <h3>Contact Us</h3>
+            <p>
+              <i class="fa-solid fa-envelope"></i> Aimtechimxstudio@gmail.com
+            </p>
+            <p><i class="fa-solid fa-phone"></i> +91 98317 39774</p>
+            <p>
+              <i class="fa-solid fa-location-dot"></i> Dakshin Gobindapur Rd,
+              Dakshin Gobindopur, Rajpur Sonarpur, Jaynagar, West Bengal 700145
+            </p>
+          </div>
 
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="about.html" style="color: var(--text-light); text-decoration: none;">About Us</a>
-                        <a href="services.html" style="color: var(--text-light); text-decoration: none;">Services</a>
-                        <a href="portfolio.html" style="color: var(--text-light); text-decoration: none;">Portfolio</a>
-                        <a href="contact.html" style="color: var(--text-light); text-decoration: none;">Contact</a>
-                    </div>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Follow Us</h3>
-                    <div class="social-icons" style="margin-top: 15px;">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://www.youtube.com/@aimtechanimation" aria-label="YouTube"><i
-                                class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <a
+                href="about.html"
+                style="color: var(--text-light); text-decoration: none"
+                >About Us</a
+              >
+              <a
+                href="services.html"
+                style="color: var(--text-light); text-decoration: none"
+                >Services</a
+              >
+              <a
+                href="portfolio.html"
+                style="color: var(--text-light); text-decoration: none"
+                >Portfolio</a
+              >
+              <a
+                href="contact.html"
+                style="color: var(--text-light); text-decoration: none"
+                >Contact</a
+              >
             </div>
-            <div class="copyright">
-                &copy; 2026 Aimax Studio. All Rights Reserved.
+          </div>
+
+          <div class="footer-col">
+            <h3>Follow Us</h3>
+            <div class="social-icons" style="margin-top: 15px">
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/@aimtechanimation"
+                aria-label="YouTube"
+                ><i class="fa-brands fa-youtube"></i
+              ></a>
             </div>
+          </div>
         </div>
+        <div class="copyright">
+          &copy; 2026 Aimax Studio. All Rights Reserved.
+        </div>
+      </div>
     </footer>
 
     <script>
-        // --- 1. Scroll Reveal Animation ---
-        const revealElements = document.querySelectorAll('.reveal');
+      // --- 1. Scroll Reveal Animation ---
+      const revealElements = document.querySelectorAll(".reveal");
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // --- 2. Header Scroll Effect ---
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
             }
-        });
+          });
+        },
+        { threshold: 0.1 },
+      );
 
-        // --- 3. Mobile Menu Toggle ---
-        const mobileMenuBtn = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        const navOverlay = document.getElementById('nav-overlay');
-        let menuOpen = false;
+      revealElements.forEach((el) => revealObserver.observe(el));
 
-        function toggleMenu() {
-            menuOpen = !menuOpen;
-            mobileMenuBtn.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            document.body.style.overflow = menuOpen ? 'hidden' : '';
+      // --- 2. Header Scroll Effect ---
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
         }
+      });
 
-        function closeMenu() {
-            if (menuOpen) {
-                menuOpen = false;
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+      // --- 3. Mobile Menu Toggle ---
+      const mobileMenuBtn = document.getElementById("mobile-menu");
+      const navLinks = document.getElementById("nav-links");
+      const navOverlay = document.getElementById("nav-overlay");
+      let menuOpen = false;
+
+      function toggleMenu() {
+        menuOpen = !menuOpen;
+        mobileMenuBtn.classList.toggle("active");
+        navLinks.classList.toggle("active");
+        navOverlay.classList.toggle("active");
+        document.body.style.overflow = menuOpen ? "hidden" : "";
+      }
+
+      function closeMenu() {
+        if (menuOpen) {
+          menuOpen = false;
+          mobileMenuBtn.classList.remove("active");
+          navLinks.classList.remove("active");
+          navOverlay.classList.remove("active");
+          document.body.style.overflow = "";
         }
+      }
 
-        mobileMenuBtn.addEventListener('click', toggleMenu);
-        navOverlay.addEventListener('click', closeMenu);
+      mobileMenuBtn.addEventListener("click", toggleMenu);
+      navOverlay.addEventListener("click", closeMenu);
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeMenu();
-        });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
 
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) closeMenu();
-        });
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) closeMenu();
+      });
     </script>
 
     <script src="assets/auth.js"></script>
-</body>
-
+  </body>
 </html>
